@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Holiday Tournament | St. Louis AAA Blues 2014</title>
+<meta name="description" content="Register for the St. Louis AAA Blues 2014 Holiday Tournament fundraiser, supporting the team's trip to the 2027 Pee-Wee Quebec Tournament.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar">
+    <a class="brand" href="index.html">
+      <img src="images/team-logo.png" alt="St. Louis AAA Blues 2014 logo">
+      <span class="brand-text">
+        <span class="brand-title">St. Louis AAA Blues 2014</span>
+        <span class="brand-sub">Road to Quebec!</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About the Tournament</a></li>
+      <li><a href="sponsorship.html">Sponsorship</a></li>
+      <li><a href="holiday-tournament.html" aria-current="page">Holiday Tournament</a></li>
+      <li><a href="alumni-auction.html">Alumni Auction</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Holiday Tournament</h1>
+    <p>Register your player below. All proceeds support the St. Louis AAA Blues 2014 team's trip to the 2027 Pee-Wee Quebec Tournament.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="info-box" style="border-left-color: var(--gold);">
+      <h4>Event details coming soon</h4>
+      <p style="margin:0;">Tournament dates, location, and division schedule will be posted here shortly. Registrations are open now &mdash; secure your player's spot below.</p>
+    </div>
+
+    <form class="site-form" name="holiday-tournament-entry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+      <input type="hidden" name="form-name" value="holiday-tournament-entry">
+      <p class="honeypot">
+        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+      </p>
+
+      <fieldset>
+        <legend>Player Information</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="player-name">Player Full Name *</label>
+            <input type="text" id="player-name" name="Player Name" required>
+          </div>
+          <div class="form-field">
+            <label for="player-dob">Player Birthdate *</label>
+            <input type="date" id="player-dob" name="Player Birthdate" required>
+          </div>
+          <div class="form-field">
+            <label for="current-club">Current Club *</label>
+            <input type="text" id="current-club" name="Current Club" required>
+          </div>
+          <div class="form-field">
+            <label for="current-division">Current Division *</label>
+            <input type="text" id="current-division" name="Current Division" required>
+          </div>
+          <div class="form-field">
+            <label for="current-position">Current Position *</label>
+            <select id="current-position" name="Current Position" required>
+              <option value="">Select one&hellip;</option>
+              <option>Forward</option>
+              <option>Defense</option>
+              <option>Goalie</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="jersey-size">Jersey Size *</label>
+            <select id="jersey-size" name="Jersey Size" required>
+              <option value="">Select one&hellip;</option>
+              <option>Youth Small</option>
+              <option>Youth Medium</option>
+              <option>Youth Large</option>
+              <option>Adult Small</option>
+              <option>Adult Medium</option>
+            </select>
+          </div>
+          <div class="form-field full-width">
+            <label for="registering-team">Team / Division Registering For *</label>
+            <span class="hint">Which team and division is this player registering for in the Holiday Tournament?</span>
+            <input type="text" id="registering-team" name="Registering Team Division" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Parent / Guardian Information</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="parent-name">Parent / Guardian Name *</label>
+            <input type="text" id="parent-name" name="Parent Guardian Name" required>
+          </div>
+          <div class="form-field">
+            <label for="parent-phone">Phone *</label>
+            <input type="tel" id="parent-phone" name="Parent Guardian Phone" required>
+          </div>
+          <div class="form-field">
+            <label for="parent-email">Email *</label>
+            <input type="email" id="parent-email" name="Parent Guardian Email" required>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Emergency Contact &amp; Medical</legend>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="emergency-name">Emergency Contact Name *</label>
+            <input type="text" id="emergency-name" name="Emergency Contact Name" required>
+          </div>
+          <div class="form-field">
+            <label for="emergency-phone">Emergency Contact Phone *</label>
+            <input type="tel" id="emergency-phone" name="Emergency Contact Phone" required>
+          </div>
+          <div class="form-field full-width">
+            <label for="medical-notes">Medical Notes / Allergies</label>
+            <span class="hint">Please list any allergies, medical conditions, or medications we should be aware of.</span>
+            <textarea id="medical-notes" name="Medical Notes" rows="3"></textarea>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Waiver &amp; Payment</legend>
+
+        <div class="payment-note">
+          <strong>Entry Fee Payment:</strong> Entry fees are collected via Venmo. A payment link
+          will be added here soon &mdash; you'll receive payment instructions by email after you submit
+          this registration.
+          <br><br>
+          <a class="btn btn-navy btn-placeholder" aria-disabled="true" onclick="return false;">Pay via Venmo (link coming soon)</a>
+        </div>
+
+        <div class="checkbox-field">
+          <input type="checkbox" id="waiver" name="Waiver Accepted" value="Yes" required>
+          <label for="waiver">I acknowledge and agree to the liability waiver for participation in this event, and confirm the information provided above is accurate. *</label>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn btn-gold btn-block">Submit Registration</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h4>St. Louis AAA Blues 2014</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About the Tournament</a>
+        <a href="sponsorship.html">Sponsorship Opportunities</a>
+        <a href="holiday-tournament.html">Holiday Tournament</a>
+        <a href="alumni-auction.html">Alumni Auction</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="mailto:blakesalger@gmail.com">blakesalger@gmail.com</a>
+        <a href="tel:6187910210">618-791-0210</a>
+      </div>
+      <div>
+        <h4>About Us</h4>
+        <p style="font-size:0.85rem; max-width:260px; color:#C7D0E0; margin:0;">St. Louis Blues Youth Hockey Association is a registered 501(c)(3) nonprofit organization.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 St. Louis AAA Blues 2014 &mdash; Road to Quebec! Fundraiser
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
