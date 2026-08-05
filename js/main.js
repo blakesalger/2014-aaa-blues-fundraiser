@@ -9,4 +9,34 @@ document.addEventListener("DOMContentLoaded", function () {
       toggle.setAttribute("aria-expanded", expanded);
     });
   }
+
+  var specsLink = document.getElementById("specs-link");
+  var specsModal = document.getElementById("specs-modal");
+  var specsClose = document.getElementById("specs-modal-close");
+
+  if (specsLink && specsModal) {
+    specsLink.addEventListener("click", function () {
+      specsModal.hidden = false;
+    });
+
+    function closeSpecsModal() {
+      specsModal.hidden = true;
+    }
+
+    if (specsClose) {
+      specsClose.addEventListener("click", closeSpecsModal);
+    }
+
+    specsModal.addEventListener("click", function (e) {
+      if (e.target === specsModal) {
+        closeSpecsModal();
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !specsModal.hidden) {
+        closeSpecsModal();
+      }
+    });
+  }
 });
