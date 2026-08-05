@@ -206,7 +206,10 @@ img {
 
 /* ---- Hero ---- */
 .hero {
-  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  background-image: linear-gradient(135deg, rgba(4, 30, 66, 0.93) 0%, rgba(0, 47, 135, 0.88) 100%), url("images/hero-team.jpg");
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
   color: var(--white);
   padding: 72px 0 64px;
 }
@@ -660,8 +663,30 @@ fieldset legend {
 .site-footer {
   background: var(--navy);
   color: #C7D0E0;
-  padding: 40px 0 24px;
+  padding: 0 0 24px;
   margin-top: 40px;
+  overflow: hidden;
+}
+
+.footer-photo-strip {
+  position: relative;
+  display: flex;
+  gap: 3px;
+  margin-bottom: 32px;
+}
+
+.footer-photo-strip img {
+  flex: 1 1 0;
+  height: 130px;
+  object-fit: cover;
+  display: block;
+}
+
+.footer-photo-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 30, 66, 0.25) 0%, var(--navy) 100%);
 }
 
 .footer-grid {
