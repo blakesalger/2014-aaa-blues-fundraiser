@@ -254,7 +254,7 @@ img {
 }
 
 .hero-logos img {
-  height: 140px;
+  height: 100px;
   width: auto;
 }
 
@@ -265,7 +265,11 @@ img {
 }
 
 @media (max-width: 560px) {
-  .hero-logos img,
+  .hero-logos img {
+    height: 64px;
+    width: auto;
+  }
+
   .hero-logos img.round {
     height: 90px;
     width: 90px;
