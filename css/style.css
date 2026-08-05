@@ -206,7 +206,7 @@ img {
 
 /* ---- Hero ---- */
 .hero {
-  background-image: linear-gradient(115deg, rgba(4, 30, 66, 0.88) 0%, rgba(4, 30, 66, 0.72) 45%, rgba(0, 47, 135, 0.55) 100%), url("../images/hero-team.jpg");
+  background-image: linear-gradient(180deg, rgba(4, 30, 66, 0.86) 0%, rgba(4, 30, 66, 0.8) 100%), url("../images/hero-team.jpg");
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
