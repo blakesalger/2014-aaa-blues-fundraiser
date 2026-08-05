@@ -89,11 +89,10 @@ img {
 }
 
 .brand img {
-  height: 44px;
-  width: 44px;
-  border-radius: 50%;
-  background: var(--white);
+  height: 64px;
+  width: 64px;
   object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(252, 181, 20, 0.75)) drop-shadow(0 0 16px rgba(252, 181, 20, 0.4));
 }
 
 .brand-text {
