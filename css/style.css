@@ -292,7 +292,7 @@ img {
 }
 
 .page-hero-photo {
-  background-image: linear-gradient(180deg, rgba(4, 30, 66, 0.86) 0%, rgba(4, 30, 66, 0.8) 100%), url("../images/alumni-hero.jpg");
+  background-image: linear-gradient(180deg, rgba(4, 30, 66, 0.86) 0%, rgba(4, 30, 66, 0.8) 100%), var(--hero-photo);
   background-size: cover;
   background-position: center 30%;
   background-repeat: no-repeat;
@@ -940,7 +940,7 @@ fieldset legend {
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
-  margin: 0 auto 12px;
+  margin: 0 auto 22px;
 }
 
 .price-tile {
