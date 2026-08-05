@@ -10,33 +10,73 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function openModal(modal) {
+    modal.hidden = false;
+  }
+
+  function closeModal(modal) {
+    modal.hidden = true;
+  }
+
+  // Generic behavior for every modal on the page: click outside the box,
+  // or its own [data-modal-close] button, closes it.
+  document.querySelectorAll(".modal-overlay").forEach(function (modal) {
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) {
+        closeModal(modal);
+      }
+    });
+
+    modal.querySelectorAll("[data-modal-close]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        closeModal(modal);
+      });
+    });
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      document.querySelectorAll(".modal-overlay").forEach(function (modal) {
+        if (!modal.hidden) {
+          closeModal(modal);
+        }
+      });
+    }
+  });
+
   var specsLink = document.getElementById("specs-link");
   var specsModal = document.getElementById("specs-modal");
-  var specsClose = document.getElementById("specs-modal-close");
-
   if (specsLink && specsModal) {
     specsLink.addEventListener("click", function () {
-      specsModal.hidden = false;
+      openModal(specsModal);
     });
+  }
 
-    function closeSpecsModal() {
-      specsModal.hidden = true;
-    }
+  var alumniModal = document.getElementById("alumni-modal");
+  var alumniModalName = document.getElementById("alumni-modal-name");
+  var alumniModalBio = document.getElementById("alumni-modal-bio");
+  var alumniModalAvatar = document.getElementById("alumni-modal-avatar");
 
-    if (specsClose) {
-      specsClose.addEventListener("click", closeSpecsModal);
-    }
+  if (alumniModal && alumniModalName && alumniModalBio && alumniModalAvatar) {
+    document.querySelectorAll(".alumni-card").forEach(function (card) {
+      card.addEventListener("click", function () {
+        var bioEl = card.querySelector(".alumni-bio-text");
+        var name = card.childNodes[0].textContent.trim();
+        var bio = bioEl ? bioEl.textContent.trim() : "";
+        var initials = name
+          .split(" ")
+          .map(function (part) {
+            return part.charAt(0);
+          })
+          .join("")
+          .slice(0, 2)
+          .toUpperCase();
 
-    specsModal.addEventListener("click", function (e) {
-      if (e.target === specsModal) {
-        closeSpecsModal();
-      }
-    });
-
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && !specsModal.hidden) {
-        closeSpecsModal();
-      }
+        alumniModalName.textContent = name;
+        alumniModalBio.textContent = bio;
+        alumniModalAvatar.textContent = initials;
+        openModal(alumniModal);
+      });
     });
   }
 });

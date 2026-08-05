@@ -288,7 +288,27 @@
             </div>
             <div class="form-field full-width">
               <label for="shoutout-player">Player You're Shouting Out *</label>
-              <input type="text" id="shoutout-player" name="Player Name" required>
+              <select id="shoutout-player" name="Player Name" required>
+                <option value="">Select a player&hellip;</option>
+                <option value="Nolan Blair (#50)">Nolan Blair (#50)</option>
+                <option value="Jack Donovan (#9)">Jack Donovan (#9)</option>
+                <option value="Ethan Graves (#2)">Ethan Graves (#2)</option>
+                <option value="Milo Italiano (#7)">Milo Italiano (#7)</option>
+                <option value="Geno Avenevoli (#10)">Geno Avenevoli (#10)</option>
+                <option value="Auggie Lake (#90)">Auggie Lake (#90)</option>
+                <option value="Boden Lynch (#26)">Boden Lynch (#26)</option>
+                <option value="Ryker McBride (#93)">Ryker McBride (#93)</option>
+                <option value="Harry Miller (#62)">Harry Miller (#62)</option>
+                <option value="Jaxson Moran (#13)">Jaxson Moran (#13)</option>
+                <option value="Jack Ormson (#21)">Jack Ormson (#21)</option>
+                <option value="Jacob Prest (#25)">Jacob Prest (#25)</option>
+                <option value="Kraig Redick (#16)">Kraig Redick (#16)</option>
+                <option value="Decker Reed (#8)">Decker Reed (#8)</option>
+                <option value="Lucas Reedy (#98)">Lucas Reedy (#98)</option>
+                <option value="Will Salger (#30)">Will Salger (#30)</option>
+                <option value="Cruze Wulkopf (#23)">Cruze Wulkopf (#23)</option>
+                <option value="Tommy Daake (#3)">Tommy Daake (#3)</option>
+              </select>
             </div>
             <div class="form-field full-width">
               <label for="shoutout-message">Your Message *</label>
@@ -333,7 +353,7 @@
 
 <div class="modal-overlay" id="specs-modal" hidden>
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="specs-modal-title">
-    <button type="button" class="modal-close" id="specs-modal-close" aria-label="Close">&times;</button>
+    <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
     <h3 id="specs-modal-title">Ad Specifications at a Glance</h3>
     <div class="tier-table-wrap">
       <table class="tier-summary">

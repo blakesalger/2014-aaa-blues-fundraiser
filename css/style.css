@@ -291,6 +291,14 @@ img {
   padding: 56px 0;
 }
 
+.page-hero-photo {
+  background-image: linear-gradient(180deg, rgba(4, 30, 66, 0.86) 0%, rgba(4, 30, 66, 0.8) 100%), url("../images/alumni-hero.jpg");
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  padding: 72px 0;
+}
+
 .page-hero h1 {
   color: var(--white);
   margin-bottom: 8px;
@@ -1004,6 +1012,83 @@ fieldset legend {
   font-weight: 700;
   color: var(--navy);
   font-size: 0.92rem;
+  font-family: inherit;
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.alumni-card:hover,
+.alumni-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(4, 30, 66, 0.18);
+  outline: none;
+}
+
+/* ---- Photo gallery ---- */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.photo-gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 700px) {
+  .photo-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .photo-gallery img {
+    height: 160px;
+  }
+}
+
+@media (max-width: 460px) {
+  .photo-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Alumni bio modal ---- */
+.alumni-modal-box {
+  text-align: center;
+}
+
+.alumni-modal-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+#alumni-modal-name {
+  margin-bottom: 12px;
+  padding-right: 0;
+}
+
+#alumni-modal-bio {
+  text-align: left;
+  color: var(--gray-dark);
+  line-height: 1.7;
+}
+
+.alumni-modal-box .placeholder-note {
+  margin-top: 16px;
 }
 
 .event-detail-box .detail {
