@@ -70,6 +70,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  var PARENT_PASSCODE = "Quebec2027";
+  var passcodeForm = document.getElementById("passcode-form");
+  var passcodeInput = document.getElementById("passcode-input");
+  var passcodeError = document.getElementById("passcode-error");
+  var passcodeGate = document.getElementById("passcode-gate");
+  var parentResources = document.getElementById("parent-resources");
+
+  if (passcodeForm && passcodeInput && passcodeGate && parentResources) {
+    if (sessionStorage.getItem("teamParentsUnlocked") === "true") {
+      passcodeGate.hidden = true;
+      parentResources.hidden = false;
+    }
+
+    passcodeForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (passcodeInput.value === PARENT_PASSCODE) {
+        sessionStorage.setItem("teamParentsUnlocked", "true");
+        passcodeGate.hidden = true;
+        parentResources.hidden = false;
+      } else {
+        passcodeError.hidden = false;
+        passcodeInput.value = "";
+        passcodeInput.focus();
+      }
+    });
+  }
+
   var alumniModal = document.getElementById("alumni-modal");
   var alumniModalName = document.getElementById("alumni-modal-name");
   var alumniModalBio = document.getElementById("alumni-modal-bio");

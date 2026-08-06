@@ -759,6 +759,41 @@ table.tier-summary tr:last-child td {
   padding: 14px 32px;
 }
 
+/* ---- Passcode gate ---- */
+.passcode-box {
+  max-width: 440px;
+  margin: 0 auto;
+  background: var(--white);
+  border: 1px solid #E4E9F1;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 40px 36px;
+  text-align: center;
+}
+
+.passcode-box h2 {
+  margin-bottom: 10px;
+}
+
+.passcode-box p {
+  color: var(--gray-mid);
+  font-size: 0.95rem;
+}
+
+.passcode-box form {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.passcode-error {
+  color: #C0392B !important;
+  font-size: 0.85rem !important;
+  margin: -4px 0 0 !important;
+}
+
 /* ---- Info / contact boxes ---- */
 .info-box {
   background: var(--white);
