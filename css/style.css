@@ -1091,6 +1091,20 @@ fieldset legend {
   letter-spacing: 0.02em;
 }
 
+.alert-banner {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  color: var(--gold);
+  text-align: center;
+  padding: 28px 24px;
+  border-radius: var(--border-radius);
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow);
+}
+
 .event-detail-box {
   display: flex;
   flex-wrap: wrap;
