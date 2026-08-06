@@ -115,18 +115,29 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 2000);
       }
 
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(text).then(showCopied);
-      } else {
+      function fallbackCopy() {
         var textarea = document.createElement("textarea");
         textarea.value = text;
         textarea.style.position = "fixed";
         textarea.style.opacity = "0";
         document.body.appendChild(textarea);
         textarea.select();
-        document.execCommand("copy");
+        try {
+          document.execCommand("copy");
+          showCopied();
+        } catch (err) {
+          btn.textContent = "Press Ctrl+C to copy";
+          setTimeout(function () {
+            btn.textContent = originalLabel;
+          }, 2500);
+        }
         document.body.removeChild(textarea);
-        showCopied();
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied).catch(fallbackCopy);
+      } else {
+        fallbackCopy();
       }
     });
   });
