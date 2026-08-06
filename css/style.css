@@ -26,17 +26,19 @@ html {
 
 body {
   margin: 0;
-  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
+  font-family: "Jost", "Segoe UI", Arial, sans-serif;
   color: var(--gray-dark);
   background: var(--white);
   line-height: 1.6;
 }
 
-h1, h2, h3, h4 {
-  font-family: "Montserrat", "Segoe UI", Arial, sans-serif;
-  font-weight: 800;
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
   color: var(--navy);
-  line-height: 1.2;
+  line-height: 1.15;
   margin-top: 0;
 }
 
@@ -50,10 +52,10 @@ img {
 }
 
 .tagline {
-  font-family: "Dancing Script", cursive;
+  font-family: "Alex Brush", cursive;
   color: var(--gold);
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.2rem;
+  font-weight: 400;
 }
 
 .container {
@@ -102,15 +104,18 @@ img {
 }
 
 .brand-text .brand-title {
-  font-weight: 800;
-  font-size: 1rem;
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: 400;
+  font-size: 1.15rem;
   color: var(--white);
 }
 
 .brand-text .brand-sub {
-  font-family: "Dancing Script", cursive;
+  font-family: "Alex Brush", cursive;
   color: var(--gold);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .nav-toggle {
@@ -498,11 +503,12 @@ section.alt {
 
 .tier-name {
   margin: 4px 0 0;
-  font-size: 0.98rem;
-  font-weight: 800;
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 400;
   color: var(--navy);
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 
 .tier-slots {
