@@ -1244,6 +1244,71 @@ fieldset legend {
   outline: none;
 }
 
+/* ---- Team roster & staff ---- */
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.roster-card {
+  background: var(--white);
+  border: 1px solid #E4E9F1;
+  border-top: 3px solid var(--gold);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 18px 10px;
+  text-align: center;
+}
+
+.roster-number {
+  margin: 0;
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 2rem;
+  color: var(--blue);
+  line-height: 1;
+}
+
+.roster-name {
+  margin: 6px 0 0;
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--navy);
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.staff-card {
+  background: var(--white);
+  border: 1px solid #E4E9F1;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 22px;
+  text-align: center;
+}
+
+.staff-name {
+  margin: 0;
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1.02rem;
+}
+
+.staff-role {
+  margin: 6px 0 0;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--blue);
+  font-weight: 700;
+}
+
 /* ---- Photo gallery ---- */
 .photo-gallery {
   display: grid;
