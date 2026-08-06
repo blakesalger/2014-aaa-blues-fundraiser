@@ -3,6 +3,7 @@ Thumbs.db
 
 # Raw full-resolution originals - resized copies in images/ are what the site uses
 images/DSC*.JPG
+images/2014*.jpg
 images/Tournoi Logo.png
 images/Shout Out Sample.png
 images/*.psd

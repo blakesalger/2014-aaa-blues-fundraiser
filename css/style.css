@@ -1262,8 +1262,33 @@ fieldset legend {
   text-align: center;
 }
 
+.roster-photo {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+  border: 2px solid var(--gold);
+}
+
+.roster-photo-placeholder {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  color: var(--gold);
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 1.7rem;
+  border: 2px solid var(--gold);
+}
+
 .roster-number {
-  margin: 0;
+  margin: 10px 0 0;
   font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
   font-size: 2rem;
   color: var(--blue);
