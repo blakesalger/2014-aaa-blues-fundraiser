@@ -147,6 +147,114 @@ Thanks so much,
     <div class="coming-soon">
       Hotel Booking Link (coming soon)
     </div>
+
+    <div class="resource-block">
+      <h3>Hotel Headcount</h3>
+      <p>
+        To help us plan hotel room blocks, please let us know how many people from your family
+        will be in Quebec City and when each person will be arriving and departing. It's common
+        for one parent to be there the entire tournament while another parent and siblings only
+        come for part of it &mdash; just list each person's actual dates below.
+      </p>
+
+      <form class="site-form" name="hotel-headcount" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html">
+        <input type="hidden" name="form-name" value="hotel-headcount">
+        <p class="honeypot">
+          <label>Don't fill this out if you're human: <input name="bot-field"></label>
+        </p>
+
+        <fieldset>
+          <legend>Family Information</legend>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="hotel-player-name">Player Name *</label>
+              <input type="text" id="hotel-player-name" name="Player Name" required>
+            </div>
+            <div class="form-field">
+              <label for="hotel-family-contact">Parent/Guardian Name *</label>
+              <input type="text" id="hotel-family-contact" name="Parent Guardian Name" required>
+            </div>
+            <div class="form-field">
+              <label for="hotel-total-count">Total Number of People Attending *</label>
+              <input type="number" id="hotel-total-count" name="Total Attending" min="1" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Attendee Travel Dates</legend>
+          <p class="placeholder-note" style="margin-bottom:16px;">Add each person attending, along with their arrival and departure dates.</p>
+
+          <div id="attendee-rows">
+            <div class="attendee-row" data-attendee-index="1">
+              <p class="attendee-row-label">Person 1</p>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="attendee-1-name">Name *</label>
+                  <input type="text" id="attendee-1-name" name="Attendee 1 Name" required>
+                </div>
+                <div class="form-field">
+                  <label for="attendee-1-arrival">Arrival Date *</label>
+                  <input type="date" id="attendee-1-arrival" name="Attendee 1 Arrival Date" required>
+                </div>
+                <div class="form-field">
+                  <label for="attendee-1-departure">Departure Date *</label>
+                  <input type="date" id="attendee-1-departure" name="Attendee 1 Departure Date" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="attendee-row" data-attendee-index="2">
+              <div class="attendee-row-header">
+                <p class="attendee-row-label">Person 2</p>
+                <button type="button" class="attendee-remove-btn" data-remove-attendee>&times; Remove</button>
+              </div>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="attendee-2-name">Name *</label>
+                  <input type="text" id="attendee-2-name" name="Attendee 2 Name" required>
+                </div>
+                <div class="form-field">
+                  <label for="attendee-2-arrival">Arrival Date *</label>
+                  <input type="date" id="attendee-2-arrival" name="Attendee 2 Arrival Date" required>
+                </div>
+                <div class="form-field">
+                  <label for="attendee-2-departure">Departure Date *</label>
+                  <input type="date" id="attendee-2-departure" name="Attendee 2 Departure Date" required>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-outline-navy" id="add-attendee-btn">+ Add Another Person</button>
+        </fieldset>
+
+        <fieldset>
+          <legend>Extended Family</legend>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="extended-family">Do you have extended family planning to attend? *</label>
+              <select id="extended-family" name="Extended Family Attending" required>
+                <option value="">Select one&hellip;</option>
+                <option>Yes</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="form-field" id="fairmont-question-wrap" hidden>
+              <label for="fairmont-request">Would they like to request a room at the Fairmont?</label>
+              <select id="fairmont-request" name="Fairmont Room Request">
+                <option value="">Select one&hellip;</option>
+                <option>Yes</option>
+                <option>No</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-gold btn-block">Submit Hotel Headcount</button>
+      </form>
+    </div>
   </div>
 </section>
 

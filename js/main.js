@@ -142,6 +142,75 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
+  var attendeeRows = document.getElementById("attendee-rows");
+  var addAttendeeBtn = document.getElementById("add-attendee-btn");
+
+  function renumberAttendeeRows() {
+    var rows = attendeeRows.querySelectorAll(".attendee-row");
+    rows.forEach(function (row, i) {
+      var index = i + 1;
+      row.setAttribute("data-attendee-index", index);
+      var label = row.querySelector(".attendee-row-label");
+      if (label) {
+        label.textContent = "Person " + index;
+      }
+      row.querySelectorAll("input").forEach(function (input) {
+        var name = input.getAttribute("name");
+        if (name) {
+          input.setAttribute("name", name.replace(/Attendee \d+/, "Attendee " + index));
+        }
+      });
+    });
+  }
+
+  if (attendeeRows && addAttendeeBtn) {
+    addAttendeeBtn.addEventListener("click", function () {
+      var nextIndex = attendeeRows.querySelectorAll(".attendee-row").length + 1;
+      var row = document.createElement("div");
+      row.className = "attendee-row";
+      row.setAttribute("data-attendee-index", nextIndex);
+      row.innerHTML =
+        '<div class="attendee-row-header">' +
+          '<p class="attendee-row-label">Person ' + nextIndex + '</p>' +
+          '<button type="button" class="attendee-remove-btn" data-remove-attendee>&times; Remove</button>' +
+        '</div>' +
+        '<div class="form-grid">' +
+          '<div class="form-field">' +
+            '<label>Name *</label>' +
+            '<input type="text" name="Attendee ' + nextIndex + ' Name" required>' +
+          '</div>' +
+          '<div class="form-field">' +
+            '<label>Arrival Date *</label>' +
+            '<input type="date" name="Attendee ' + nextIndex + ' Arrival Date" required>' +
+          '</div>' +
+          '<div class="form-field">' +
+            '<label>Departure Date *</label>' +
+            '<input type="date" name="Attendee ' + nextIndex + ' Departure Date" required>' +
+          '</div>' +
+        '</div>';
+      attendeeRows.appendChild(row);
+    });
+
+    attendeeRows.addEventListener("click", function (e) {
+      if (e.target.matches("[data-remove-attendee]")) {
+        var row = e.target.closest(".attendee-row");
+        if (row) {
+          row.remove();
+          renumberAttendeeRows();
+        }
+      }
+    });
+  }
+
+  var extendedFamilySelect = document.getElementById("extended-family");
+  var fairmontWrap = document.getElementById("fairmont-question-wrap");
+
+  if (extendedFamilySelect && fairmontWrap) {
+    extendedFamilySelect.addEventListener("change", function () {
+      fairmontWrap.hidden = extendedFamilySelect.value !== "Yes";
+    });
+  }
+
   var alumniModal = document.getElementById("alumni-modal");
   var alumniModalName = document.getElementById("alumni-modal-name");
   var alumniModalBio = document.getElementById("alumni-modal-bio");

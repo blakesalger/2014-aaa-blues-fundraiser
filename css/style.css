@@ -20,6 +20,13 @@
   box-sizing: border-box;
 }
 
+/* Guarantee the hidden attribute always wins, even over display:flex/grid
+   utility classes (e.g. .form-field), which otherwise out-specificity the
+   browser's default [hidden] { display: none } rule. */
+[hidden] {
+  display: none !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -185,6 +192,17 @@ img {
 
 .btn-outline:hover {
   background: rgba(255, 255, 255, 0.12);
+}
+
+.btn-outline-navy {
+  background: transparent;
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.btn-outline-navy:hover {
+  background: var(--navy);
+  color: var(--white);
 }
 
 .btn-navy {
@@ -767,6 +785,51 @@ table.tier-summary tr:last-child td {
   box-shadow: var(--shadow);
   padding: 32px;
   margin-bottom: 28px;
+}
+
+.attendee-row {
+  background: var(--gray-light);
+  border-radius: 8px;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+
+.attendee-row-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.attendee-row-label {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--navy);
+}
+
+.attendee-row-header .attendee-row-label {
+  margin-bottom: 0;
+}
+
+.attendee-remove-btn {
+  background: none;
+  border: none;
+  color: #C0392B;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+
+.attendee-remove-btn:hover {
+  text-decoration: underline;
+}
+
+#add-attendee-btn {
+  margin-top: 4px;
 }
 
 .resource-block h3 {
