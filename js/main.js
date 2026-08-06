@@ -97,6 +97,40 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  document.querySelectorAll("[data-copy-target]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var target = document.getElementById(btn.getAttribute("data-copy-target"));
+      if (!target) {
+        return;
+      }
+      var text = target.textContent;
+      var originalLabel = btn.textContent;
+
+      function showCopied() {
+        btn.textContent = "Copied!";
+        btn.classList.add("copy-btn-copied");
+        setTimeout(function () {
+          btn.textContent = originalLabel;
+          btn.classList.remove("copy-btn-copied");
+        }, 2000);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(showCopied);
+      } else {
+        var textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        showCopied();
+      }
+    });
+  });
+
   var alumniModal = document.getElementById("alumni-modal");
   var alumniModalName = document.getElementById("alumni-modal-name");
   var alumniModalBio = document.getElementById("alumni-modal-bio");

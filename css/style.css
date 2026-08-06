@@ -759,6 +759,77 @@ table.tier-summary tr:last-child td {
   padding: 14px 32px;
 }
 
+/* ---- Team parent resources ---- */
+.resource-block {
+  background: var(--white);
+  border: 1px solid #E4E9F1;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 32px;
+  margin-bottom: 28px;
+}
+
+.resource-block h3 {
+  margin-bottom: 10px;
+}
+
+.resource-subsection {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 2px solid var(--gray-light);
+}
+
+.resource-subsection h4 {
+  margin-bottom: 8px;
+}
+
+.social-post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.social-post-card {
+  background: var(--gray-light);
+  border-radius: var(--border-radius);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-post-card img {
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.social-post-card h5 {
+  margin: 4px 0 0;
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 1.05rem;
+  color: var(--navy);
+}
+
+.social-caption {
+  background: var(--white);
+  border: 1px solid #E4E9F1;
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-size: 0.85rem;
+  color: var(--gray-dark);
+  white-space: pre-line;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.copy-btn-copied {
+  background: var(--gold) !important;
+  color: var(--navy) !important;
+}
+
 /* ---- Passcode gate ---- */
 .passcode-box {
   max-width: 440px;
