@@ -52,6 +52,24 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  var tierModal = document.getElementById("tier-modal");
+  var tierModalName = document.getElementById("tier-modal-name");
+  var tierModalImage = document.getElementById("tier-modal-image");
+  var tierModalCta = document.getElementById("tier-modal-cta");
+
+  if (tierModal && tierModalName && tierModalImage && tierModalCta) {
+    document.querySelectorAll("[data-tier-modal]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var name = btn.getAttribute("data-tier-name") || "";
+        tierModalName.textContent = name;
+        tierModalImage.src = btn.getAttribute("data-tier-image") || "";
+        tierModalImage.alt = name + " sponsorship details";
+        tierModalCta.href = btn.getAttribute("data-tier-mailto") || "#";
+        openModal(tierModal);
+      });
+    });
+  }
+
   var alumniModal = document.getElementById("alumni-modal");
   var alumniModalName = document.getElementById("alumni-modal-name");
   var alumniModalBio = document.getElementById("alumni-modal-bio");

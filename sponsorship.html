@@ -80,7 +80,7 @@
           <li>Logo on team jersey</li>
           <li>VIP table with a player</li>
         </ul>
-        <a class="btn btn-gold tier-cta" href="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Presenting%20Sponsor">Sponsor This Level</a>
+        <button type="button" class="btn btn-gold tier-cta" data-tier-modal data-tier-image="images/tier-presenting.jpg" data-tier-name="Presenting Sponsor" data-tier-mailto="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Presenting%20Sponsor">View Full Details</button>
       </div>
 
       <div class="tier-card">
@@ -91,7 +91,7 @@
           <li>8 event tickets</li>
           <li>Player at your table</li>
         </ul>
-        <a class="btn btn-gold tier-cta" href="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Platinum%20Sponsor">Sponsor This Level</a>
+        <button type="button" class="btn btn-gold tier-cta" data-tier-modal data-tier-image="images/tier-platinum.jpg" data-tier-name="Platinum Sponsor" data-tier-mailto="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Platinum%20Sponsor">View Full Details</button>
       </div>
 
       <div class="tier-card">
@@ -101,7 +101,7 @@
           <li>Event branding &amp; signage</li>
           <li>8 event tickets</li>
         </ul>
-        <a class="btn btn-gold tier-cta" href="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Gold%20Sponsor">Sponsor This Level</a>
+        <button type="button" class="btn btn-gold tier-cta" data-tier-modal data-tier-image="images/tier-gold.jpg" data-tier-name="Gold Sponsor" data-tier-mailto="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Gold%20Sponsor">View Full Details</button>
       </div>
 
       <div class="tier-card">
@@ -111,7 +111,7 @@
           <li>Donate a $2,500+ item or cash</li>
           <li>Named live auction sponsor</li>
         </ul>
-        <a class="btn btn-gold tier-cta" href="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Live%20Auction%20Donor">Sponsor This Level</a>
+        <button type="button" class="btn btn-gold tier-cta" data-tier-modal data-tier-image="images/tier-liveauction.jpg" data-tier-name="Live Auction Donor" data-tier-mailto="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Live%20Auction%20Donor">View Full Details</button>
       </div>
 
       <div class="tier-card">
@@ -121,7 +121,7 @@
           <li>Event signage</li>
           <li>4 event tickets</li>
         </ul>
-        <a class="btn btn-gold tier-cta" href="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Silver%20Sponsor">Sponsor This Level</a>
+        <button type="button" class="btn btn-gold tier-cta" data-tier-modal data-tier-image="images/tier-silver.jpg" data-tier-name="Silver Sponsor" data-tier-mailto="mailto:blakesalger@gmail.com?subject=Sponsorship%20Inquiry%3A%20Silver%20Sponsor">View Full Details</button>
       </div>
     </div>
   </div>
@@ -350,6 +350,15 @@
     </div>
   </div>
 </section>
+
+<div class="modal-overlay" id="tier-modal" hidden>
+  <div class="modal-box tier-modal-box" role="dialog" aria-modal="true" aria-labelledby="tier-modal-name">
+    <button type="button" class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <h3 id="tier-modal-name" class="sr-only"></h3>
+    <img id="tier-modal-image" class="tier-modal-image" src="" alt="">
+    <a id="tier-modal-cta" class="btn btn-gold tier-modal-btn" href="#">Sponsor This Level</a>
+  </div>
+</div>
 
 <div class="modal-overlay" id="specs-modal" hidden>
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="specs-modal-title">
