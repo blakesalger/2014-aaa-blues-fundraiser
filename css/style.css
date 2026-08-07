@@ -1184,6 +1184,13 @@ fieldset legend {
   color: var(--gold);
 }
 
+.price-tile .price-note {
+  margin: 6px 0 0;
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-style: italic;
+}
+
 .price-tile .price-label {
   margin: 4px 0 0;
   font-size: 0.85rem;
