@@ -1341,6 +1341,43 @@ fieldset legend {
   color: var(--navy);
 }
 
+/* ---- Championship legacy highlight ---- */
+.legacy-highlight {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 36px;
+  box-shadow: var(--shadow);
+}
+
+.legacy-highlight img {
+  width: 380px;
+  max-width: 100%;
+  border-radius: 8px;
+  border: 3px solid var(--gold);
+  flex-shrink: 0;
+  box-shadow: var(--shadow);
+}
+
+.legacy-highlight-text h2 {
+  color: var(--white);
+}
+
+.legacy-highlight-text p:not(.tagline) {
+  color: #E6ECF7;
+  margin: 10px 0 0;
+}
+
+@media (max-width: 700px) {
+  .legacy-highlight {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 /* ---- Featured auctioneer highlight ---- */
 .featured-auctioneer {
   display: flex;
