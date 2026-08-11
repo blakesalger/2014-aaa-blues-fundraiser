@@ -1155,6 +1155,7 @@ fieldset legend {
   color: var(--white);
   border-radius: var(--border-radius);
   padding: 160px 40px 52px;
+  margin-top: 70px;
   text-align: center;
   box-shadow: var(--shadow);
   position: relative;
@@ -1174,6 +1175,7 @@ fieldset legend {
 @media (max-width: 560px) {
   .ticket-feature {
     padding-top: 120px;
+    margin-top: 20px;
   }
 
   .ticket-feature-logo {
