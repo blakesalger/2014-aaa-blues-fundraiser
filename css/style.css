@@ -1159,6 +1159,14 @@ fieldset legend {
   box-shadow: var(--shadow);
 }
 
+.ticket-feature-logo {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto 24px;
+}
+
 .ticket-feature h2 {
   color: var(--white);
   font-size: 2.1rem;
