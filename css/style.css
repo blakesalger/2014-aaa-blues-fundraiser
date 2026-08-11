@@ -1154,17 +1154,31 @@ fieldset legend {
   background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
   color: var(--white);
   border-radius: var(--border-radius);
-  padding: 52px 40px;
+  padding: 160px 40px 52px;
   text-align: center;
   box-shadow: var(--shadow);
+  position: relative;
 }
 
 .ticket-feature-logo {
-  display: block;
-  width: 100%;
-  max-width: 420px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 380px;
   height: auto;
-  margin: 0 auto 24px;
+  margin: 0;
+}
+
+@media (max-width: 560px) {
+  .ticket-feature {
+    padding-top: 120px;
+  }
+
+  .ticket-feature-logo {
+    max-width: 280px;
+  }
 }
 
 .ticket-feature h2 {
