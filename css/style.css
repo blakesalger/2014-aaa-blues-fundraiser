@@ -1161,6 +1161,98 @@ fieldset legend {
   position: relative;
 }
 
+/* ---- Fun & extras highlight (3v3 tournament) ---- */
+.fun-extras-box {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  color: var(--white);
+  border-radius: var(--border-radius);
+  padding: 52px 40px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.fun-extras-box h2 {
+  color: var(--white);
+  font-size: 2.1rem;
+  margin: 4px 0 14px;
+}
+
+.fun-extras-box p.lead {
+  color: #E6ECF7;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.fun-list {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 560px;
+  text-align: left;
+}
+
+.fun-list li {
+  font-size: 1rem;
+  color: #E6ECF7;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.fun-list li strong {
+  color: var(--white);
+}
+
+/* ---- FAQ accordion ---- */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 760px;
+  margin: 28px auto 0;
+}
+
+.faq-item {
+  background: var(--white);
+  border: 1px solid #E4E9F1;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 18px 22px;
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--navy);
+  list-style: none;
+  position: relative;
+  padding-right: 28px;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: -2px;
+  font-size: 1.4rem;
+  color: var(--blue);
+  font-weight: 400;
+}
+
+.faq-item[open] summary::after {
+  content: "\2212";
+}
+
+.faq-item p {
+  margin: 12px 0 0;
+  color: var(--gray-dark);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
 .ticket-feature-logo {
   position: absolute;
   top: 0;
