@@ -1181,9 +1181,24 @@ fieldset legend {
   background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
   color: var(--white);
   border-radius: var(--border-radius);
-  padding: 52px 40px;
+  padding: 52px 40px 200px;
   text-align: center;
   box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.fun-extras-mascot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 460px;
+  height: auto;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 45%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 45%);
+  pointer-events: none;
 }
 
 .fun-extras-box h2 {
