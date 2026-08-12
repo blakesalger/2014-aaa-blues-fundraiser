@@ -186,6 +186,11 @@
             <label for="roster-size">Approximate Number of Players *</label>
             <input type="number" id="roster-size" name="Approximate Roster Size" min="1" required>
           </div>
+          <div class="form-field full-width">
+            <label for="season-division">Current Season Division *</label>
+            <span class="hint">Sample: Chesterfield Red, Affton A1, etc.</span>
+            <input type="text" id="season-division" name="Current Season Division" required>
+          </div>
         </div>
       </fieldset>
 
@@ -208,20 +213,72 @@
       </fieldset>
 
       <fieldset>
-        <legend>Emergency Contact &amp; Medical</legend>
+        <legend>Player Roster</legend>
+        <p class="placeholder-note" style="margin-bottom:16px;">List up to 8 players from your team. If your roster isn't finalized yet, that's okay &mdash; add who you can and update us later.</p>
         <div class="form-grid">
           <div class="form-field">
-            <label for="emergency-name">Emergency Contact Name *</label>
-            <input type="text" id="emergency-name" name="Emergency Contact Name" required>
+            <label for="player-1-name">Player 1 Name</label>
+            <input type="text" id="player-1-name" name="Player 1 Name">
           </div>
           <div class="form-field">
-            <label for="emergency-phone">Emergency Contact Phone *</label>
-            <input type="tel" id="emergency-phone" name="Emergency Contact Phone" required>
+            <label for="player-1-dob">Player 1 Birthdate</label>
+            <input type="date" id="player-1-dob" name="Player 1 Birthdate">
           </div>
-          <div class="form-field full-width">
-            <label for="medical-notes">Medical Notes / Allergies</label>
-            <span class="hint">List any allergies, medical conditions, or medications we should be aware of for players on your team.</span>
-            <textarea id="medical-notes" name="Medical Notes" rows="3"></textarea>
+          <div class="form-field">
+            <label for="player-2-name">Player 2 Name</label>
+            <input type="text" id="player-2-name" name="Player 2 Name">
+          </div>
+          <div class="form-field">
+            <label for="player-2-dob">Player 2 Birthdate</label>
+            <input type="date" id="player-2-dob" name="Player 2 Birthdate">
+          </div>
+          <div class="form-field">
+            <label for="player-3-name">Player 3 Name</label>
+            <input type="text" id="player-3-name" name="Player 3 Name">
+          </div>
+          <div class="form-field">
+            <label for="player-3-dob">Player 3 Birthdate</label>
+            <input type="date" id="player-3-dob" name="Player 3 Birthdate">
+          </div>
+          <div class="form-field">
+            <label for="player-4-name">Player 4 Name</label>
+            <input type="text" id="player-4-name" name="Player 4 Name">
+          </div>
+          <div class="form-field">
+            <label for="player-4-dob">Player 4 Birthdate</label>
+            <input type="date" id="player-4-dob" name="Player 4 Birthdate">
+          </div>
+          <div class="form-field">
+            <label for="player-5-name">Player 5 Name</label>
+            <input type="text" id="player-5-name" name="Player 5 Name">
+          </div>
+          <div class="form-field">
+            <label for="player-5-dob">Player 5 Birthdate</label>
+            <input type="date" id="player-5-dob" name="Player 5 Birthdate">
+          </div>
+          <div class="form-field">
+            <label for="player-6-name">Player 6 Name</label>
+            <input type="text" id="player-6-name" name="Player 6 Name">
+          </div>
+          <div class="form-field">
+            <label for="player-6-dob">Player 6 Birthdate</label>
+            <input type="date" id="player-6-dob" name="Player 6 Birthdate">
+          </div>
+          <div class="form-field">
+            <label for="player-7-name">Player 7 Name</label>
+            <input type="text" id="player-7-name" name="Player 7 Name">
+          </div>
+          <div class="form-field">
+            <label for="player-7-dob">Player 7 Birthdate</label>
+            <input type="date" id="player-7-dob" name="Player 7 Birthdate">
+          </div>
+          <div class="form-field">
+            <label for="player-8-name">Player 8 Name</label>
+            <input type="text" id="player-8-name" name="Player 8 Name">
+          </div>
+          <div class="form-field">
+            <label for="player-8-dob">Player 8 Birthdate</label>
+            <input type="date" id="player-8-dob" name="Player 8 Birthdate">
           </div>
         </div>
       </fieldset>
@@ -237,10 +294,10 @@
           <a class="btn btn-gold btn-block" style="margin-top:14px;" href="https://venmo.com/u/2014aaablues?txn=pay&amp;amount=749&amp;note=3v3%20Tournament%20Team%20Registration" target="_blank" rel="noopener noreferrer">Pay $749 via Venmo (@2014aaablues)</a>
         </div>
 
-        <div class="checkbox-field">
-          <input type="checkbox" id="waiver" name="Waiver Accepted" value="Yes" required>
-          <label for="waiver">I acknowledge and agree to the liability waiver for participation in this event on behalf of my team, and confirm the information provided above is accurate. *</label>
-        </div>
+        <p style="margin:16px 0 0; font-size:0.9rem; color:var(--gray-dark);">
+          By submitting this form, your team and each individual player agree to sign a liability
+          waiver, which will be provided closer to the tournament.
+        </p>
       </fieldset>
 
       <button type="submit" class="btn btn-navy btn-block">Submit Team Registration</button>
