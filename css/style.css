@@ -339,6 +339,21 @@ img {
   margin: 0;
 }
 
+.puck-drop-hero-logo {
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.event-dates {
+  color: var(--blue);
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+}
+
 /* ---- Sections ---- */
 section {
   padding: 56px 0;
