@@ -314,6 +314,14 @@ img {
   box-shadow: var(--shadow);
 }
 
+.sponsorship-section-logo {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto 20px;
+}
+
 .page-hero {
   background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
   color: var(--white);
