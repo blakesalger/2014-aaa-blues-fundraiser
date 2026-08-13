@@ -1377,6 +1377,16 @@ fieldset legend {
   color: #E6ECF7;
 }
 
+.price-tile-disabled {
+  opacity: 0.5;
+  filter: grayscale(70%);
+}
+
+.price-tile-disabled .price,
+.price-tile-disabled .price-note {
+  color: #E6ECF7;
+}
+
 .highlights-list {
   list-style: none;
   margin: 28px auto 0;
