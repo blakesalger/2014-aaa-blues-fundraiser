@@ -1506,6 +1506,36 @@ fieldset legend {
   color: var(--navy);
 }
 
+.roster-club-logo {
+  height: 44px;
+  width: auto;
+  max-width: 66px;
+  object-fit: contain;
+  margin: 8px auto 0;
+  display: block;
+}
+
+.roster-club-name {
+  margin: 8px auto 0;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--gray-mid);
+  line-height: 1.2;
+  max-width: 100px;
+}
+
+.roster-role {
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+}
+
+.roster-footnote {
+  max-width: 760px;
+  margin: 32px auto 0;
+  text-align: center;
+  color: var(--gray-mid);
+}
+
 /* ---- Championship legacy highlight ---- */
 .legacy-highlight {
   display: flex;
