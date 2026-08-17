@@ -510,6 +510,22 @@ section.alt {
   }
 }
 
+.tier-grid-5col {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 1000px) {
+  .tier-grid-5col {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .tier-grid-5col {
+    grid-template-columns: 1fr;
+  }
+}
+
 .tier-card {
   background: var(--white);
   border: 1px solid #E4E9F1;
