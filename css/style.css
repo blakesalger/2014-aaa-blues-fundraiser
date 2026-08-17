@@ -413,14 +413,6 @@ img {
   margin-top: 18px;
 }
 
-.sponsor-feature-text-right {
-  text-align: right;
-}
-
-.sponsor-links-right {
-  justify-content: flex-end;
-}
-
 /* ---- Sections ---- */
 section {
   padding: 56px 0;
