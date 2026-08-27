@@ -599,6 +599,32 @@ section.alt {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
 
+.sold-stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 28px;
+  border: 3px solid var(--navy);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.96);
+  transform: rotate(-10deg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.sold-stamp-logo {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+
+.sold-stamp span {
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 0.15em;
+  color: var(--navy);
+}
+
 .tier-card {
   background: var(--white);
   border: 1px solid #E4E9F1;
