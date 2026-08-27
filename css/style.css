@@ -587,27 +587,15 @@ section.alt {
   z-index: 5;
 }
 
-.sold-overlay span {
-  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
-  font-size: 2.4rem;
-  letter-spacing: 0.15em;
-  color: var(--gold);
-  border: 3px solid var(--gold);
-  padding: 6px 26px;
-  transform: rotate(-10deg);
-  background: rgba(4, 30, 66, 0.9);
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-}
-
 .sold-stamp {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   padding: 14px 28px;
-  border: 3px solid var(--navy);
+  border: 3px solid var(--gold);
   border-radius: 6px;
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(4, 30, 66, 0.92);
   transform: rotate(-10deg);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
 }
@@ -616,13 +604,16 @@ section.alt {
   height: 26px;
   width: auto;
   display: block;
+  background: var(--white);
+  padding: 6px 10px;
+  border-radius: 4px;
 }
 
 .sold-stamp span {
   font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
   font-size: 1.7rem;
   letter-spacing: 0.15em;
-  color: var(--navy);
+  color: var(--gold);
 }
 
 .tier-card {
