@@ -1448,6 +1448,29 @@ fieldset legend {
   margin-top: 14px;
 }
 
+.ticket-sold-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.ticket-sold-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-8deg);
+  background: rgba(4, 30, 66, 0.92);
+  color: var(--gold);
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  padding: 6px 20px;
+  border: 2px solid var(--gold);
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
 .ticket-pricing {
   display: flex;
   flex-wrap: wrap;
