@@ -1,0 +1,27 @@
+# Site-level Netlify settings. The site itself is plain static files; this file
+# only adds the serverless functions that keep the 50/50 raffle pot total
+# up to date (netlify/functions/*).
+
+[build]
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+# The function source lives inside the published folder, so keep it from being
+# served as downloadable files. (The functions themselves still run.)
+[[redirects]]
+  from = "/netlify/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+# Environment variables are set in the Netlify UI (Site configuration >
+# Environment variables), NEVER in this file — never commit real API keys.
+#
+# Required for the raffle pot:
+#   ONECAUSE_ORG_ID          - your OneCause organization ID (shown next to your API key)
+#   ONECAUSE_EVENT_ID        - the OneCause event the raffle is sold on (36-char ID, no "vevt:" prefix)
+#   ONECAUSE_API_KEY         - your OneCause API key (sent as "Authorization: api <key>")
+# Optional:
+#   RAFFLE_WINNER_SHARE_PCT  - winner's percentage of the pot (default 50)

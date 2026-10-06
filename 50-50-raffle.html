@@ -52,7 +52,8 @@
       home <strong>50% of the total pot</strong>!
     </p>
 
-    <!-- UPDATE: change the TOTAL pot amount and the "as of" date below as the raffle grows -->
+    <!-- The TOTAL pot and "as of" time below are filled in automatically from OneCause by the script at the
+         bottom of this page (via /api/pot-total). The text here is only a fallback shown if that data isn't available. -->
     <div class="raffle-pot">
       <p class="raffle-pot-label">Total Pot</p>
       <p class="raffle-pot-amount">$X,XXX</p>
@@ -228,6 +229,55 @@
   </div>
 </footer>
 
+<script>
+// Keeps the Total Pot in sync with OneCause. /api/pot-total returns the total
+// cached by the scheduled function in netlify/functions. If it isn't available
+// (before setup, or when previewing locally) the fallback text is left alone.
+(function () {
+  var amountEl = document.querySelector(".raffle-pot-amount");
+  var asofEl = document.querySelector(".raffle-pot-asof");
+  if (!amountEl || !asofEl || !window.fetch) return;
+
+  function money(n) {
+    var whole = Math.abs(n - Math.round(n)) < 0.005;
+    return "$" + n.toLocaleString("en-US", {
+      minimumFractionDigits: whole ? 0 : 2,
+      maximumFractionDigits: whole ? 0 : 2
+    });
+  }
+
+  function asOf(iso) {
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return null;
+    return d.toLocaleString("en-US", {
+      timeZone: "America/Chicago",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "2-digit"
+    }) + " CT";
+  }
+
+  function refresh() {
+    fetch("/api/pot-total", { cache: "no-store" })
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        if (!data || !data.lastUpdated || typeof data.totalRevenue !== "number") return;
+        var label = asOf(data.lastUpdated);
+        if (!label) return;
+        amountEl.textContent = money(data.totalRevenue);
+        asofEl.textContent = "as of " + label;
+      })
+      .catch(function () { /* keep whatever is already showing */ });
+  }
+
+  refresh();
+  setInterval(refresh, 60000);
+})();
+</script>
 <script src="js/main.js"></script>
 </body>
 </html>
