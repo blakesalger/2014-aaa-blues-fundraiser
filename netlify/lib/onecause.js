@@ -112,9 +112,15 @@ export function describeShape(json) {
   return { type: typeof json };
 }
 
+// OneCause's real replies look like
+//   { code, status, type, payload: { items: [...], nextPageNumber: 2 | null } }
+// (their docs call it next_page_number). Look in every place it might be.
 export function nextPageNumber(json) {
   if (!json || typeof json !== "object" || Array.isArray(json)) return null;
-  const n = json.next_page_number ?? json.nextPageNumber ?? null;
+  const payload = json.payload && typeof json.payload === "object" ? json.payload : {};
+  const n =
+    json.next_page_number ?? json.nextPageNumber ??
+    payload.next_page_number ?? payload.nextPageNumber ?? null;
   return n === null || n === undefined || n === "" ? null : Number(n);
 }
 
