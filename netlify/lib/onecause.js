@@ -69,11 +69,47 @@ export function activitiesUrl(orgId, eventId, pageNumber = 1, pageSize = PAGE_SI
 export function extractRows(json) {
   if (Array.isArray(json)) return json;
   if (json && typeof json === "object") {
+    // First array directly on the response...
     for (const value of Object.values(json)) {
       if (Array.isArray(value)) return value;
     }
+    // ...otherwise the first array one level down, e.g. { data: { items: [...] } }
+    for (const value of Object.values(json)) {
+      if (value && typeof value === "object") {
+        for (const inner of Object.values(value)) {
+          if (Array.isArray(inner)) return inner;
+        }
+      }
+    }
   }
   return [];
+}
+
+// Structure only — key names, types and counts, never values. Used by the
+// tester to show what shape OneCause's responses really have.
+export function describeShape(json) {
+  if (Array.isArray(json)) {
+    const first = json[0];
+    return {
+      type: "array",
+      length: json.length,
+      firstItemKeys: first && typeof first === "object" ? Object.keys(first).slice(0, 80) : null,
+    };
+  }
+  if (json && typeof json === "object") {
+    const keys = {};
+    for (const [k, v] of Object.entries(json)) {
+      if (Array.isArray(v)) {
+        const first = v[0];
+        keys[k] = `array(${v.length})` +
+          (first && typeof first === "object" ? ` of objects with keys: ${Object.keys(first).slice(0, 80).join(", ")}` : "");
+      } else if (v === null) keys[k] = "null";
+      else if (typeof v === "object") keys[k] = `object(keys: ${Object.keys(v).slice(0, 12).join(", ")})`;
+      else keys[k] = typeof v;
+    }
+    return { type: "object", keys };
+  }
+  return { type: typeof json };
 }
 
 export function nextPageNumber(json) {

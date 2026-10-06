@@ -8,6 +8,10 @@
 // can delete this file — it isn't needed day to day.
 
 import {
+  authHeaders,
+  activitiesUrl,
+  eventsUrl,
+  describeShape,
   fetchAllActivities,
   fetchAllEvents,
   fetchRecentActivities,
@@ -26,6 +30,31 @@ const json = (body, status = 200) =>
     status,
     headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
   });
+
+// One raw request, reporting only the STRUCTURE of the reply (and, for the
+// events list only, a short text preview — event names/IDs, no personal data).
+async function probe(url, apiKey, previewChars = 0) {
+  try {
+    const res = await fetch(url, { headers: authHeaders(apiKey) });
+    const text = await res.text();
+    let parsed = null;
+    try {
+      parsed = JSON.parse(text);
+    } catch {
+      // not JSON
+    }
+    return {
+      status: res.status,
+      shape: parsed !== null ? describeShape(parsed) : "reply was not JSON",
+      preview: previewChars ? text.slice(0, previewChars) : undefined,
+    };
+  } catch (e) {
+    return { error: String(e) };
+  }
+}
+
+// Enough of an ID to recognize it, not enough to use it.
+const hint = (v) => (v ? `${String(v).length} chars, ends "${String(v).slice(-4)}"` : "(not set)");
 
 function hintFor(status) {
   switch (status) {
@@ -186,6 +215,12 @@ export default async (req) => {
       success: true,
       authUsed: "Authorization: api <key>",
       credentialsFromNetlifyEnv: usedEnv,
+      whatYouSaved: { orgId: hint(orgId), eventId: hint(eventId) },
+      // What OneCause's replies actually look like (structure only).
+      responseShapes: {
+        events: await probe(eventsUrl(orgId, 1, 5), apiKey, 600),
+        activitiesOnSavedEvent: await probe(activitiesUrl(orgId, eventId, 1, 5), apiKey),
+      },
       pagesFetched: pages,
       eventCheck,
       recentRaffleAnywhere: recentRaffle,
