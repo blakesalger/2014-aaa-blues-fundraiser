@@ -1,9 +1,0 @@
-{
-  "name": "aaa-blues-site-functions",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Netlify functions for the raffle pot total (OneCause -> cached total -> raffle page).",
-  "dependencies": {
-    "@netlify/blobs": "^8.1.0"
-  }
-}

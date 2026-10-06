@@ -10,7 +10,9 @@
 import {
   fetchAllActivities,
   fetchAllEvents,
+  fetchRecentActivities,
   checkEvent,
+  bareId,
   summarize,
   isRaffle,
   isCollected,
@@ -102,6 +104,53 @@ export default async (req) => {
       };
     }
 
+    // Where did recent raffle purchases actually land? Looks at the last few
+    // days across the WHOLE account (not just the saved event) so a purchase
+    // made on a different event than the saved Event ID is spotted at once.
+    // Never fails the test.
+    let recentRaffle;
+    try {
+      const sinceDate = new Date(Date.now() - 3 * 24 * 3600 * 1000).toISOString().slice(0, 10);
+      const { rows: recentRows } = await fetchRecentActivities({ orgId, apiKey, sinceDate });
+      const raffleAnywhere = recentRows.filter(isRaffle);
+      const saved = bareId(eventId).toLowerCase();
+      const onSavedEvent = raffleAnywhere.filter((r) => bareId(r.origin_id).toLowerCase() === saved);
+      const elsewhere = raffleAnywhere.filter((r) => bareId(r.origin_id).toLowerCase() !== saved);
+
+      let verdict;
+      if (raffleAnywhere.length === 0) {
+        verdict =
+          "No raffle purchases anywhere in your OneCause account in the last 3 days. If you just bought a ticket, give OneCause a few minutes and reload this page.";
+      } else if (elsewhere.length === 0) {
+        verdict = `GOOD: ${onSavedEvent.length} recent raffle purchase(s) are on the saved event.`;
+      } else if (onSavedEvent.length === 0) {
+        const where = [...new Set(elsewhere.map((r) => `"${r.origin_name}" (id ${bareId(r.origin_id)})`))].join("; ");
+        verdict = `PROBLEM: recent raffle purchases were found, but on a DIFFERENT event than the saved Event ID: ${where}. Save that event's ID as ONECAUSE_EVENT_ID.`;
+      } else {
+        verdict = `Mixed: ${onSavedEvent.length} raffle purchase(s) on the saved event and ${elsewhere.length} on other events (see list).`;
+      }
+
+      recentRaffle = {
+        verdict,
+        sinceDateUTC: sinceDate,
+        activitiesInAccountSince: recentRows.length,
+        raffleActivities: raffleAnywhere.slice(0, 20).map((r) => ({
+          event_name: r.origin_name,
+          event_id: bareId(r.origin_id),
+          on_saved_event: bareId(r.origin_id).toLowerCase() === saved,
+          item: r.activity_details || r.integration_description || null,
+          amount_paid: r.activity_total_amount_in_dollars,
+          payment_status: r.payment_status,
+          created: r.created,
+        })),
+      };
+    } catch (e) {
+      recentRaffle = {
+        verdict: "Couldn't check recent account-wide activity.",
+        detail: e instanceof OneCauseError ? `HTTP ${e.status}: ${e.bodyText}` : String(e),
+      };
+    }
+
     const itemTypeCounts = {};
     for (const row of rows) {
       const type = row.purchased_item_type || "(blank)";
@@ -139,6 +188,7 @@ export default async (req) => {
       credentialsFromNetlifyEnv: usedEnv,
       pagesFetched: pages,
       eventCheck,
+      recentRaffleAnywhere: recentRaffle,
       activitiesOnThisEvent: rows.length,
       itemTypesSeen: itemTypeCounts,
       raffle: {

@@ -40,6 +40,12 @@ export function stripEventPrefix(eventId) {
   return String(eventId ?? "").trim().replace(/^vevt[:\s_-]*/i, "");
 }
 
+// OneCause sometimes shows IDs with a label in front ("event: 1234...",
+// "vevt:1234..."). Strip a leading word + colon so IDs can be compared.
+export function bareId(id) {
+  return String(id ?? "").trim().replace(/^[a-z]+\s*:\s*/i, "");
+}
+
 export function eventsUrl(orgId, pageNumber = 1, pageSize = PAGE_SIZE) {
   return (
     `${BASE}/organizations/${encodeURIComponent(orgId)}/events` +
@@ -112,6 +118,18 @@ async function fetchAllPages(buildUrl, apiKey, fetchImpl = fetch) {
 // Every paid/refunded activity for the event.
 export function fetchAllActivities({ orgId, eventId, apiKey }, fetchImpl = fetch) {
   return fetchAllPages((p) => activitiesUrl(orgId, eventId, p), apiKey, fetchImpl);
+}
+
+// Recent activity across the WHOLE organization (no event filter). Used only
+// by the tester to find which event a just-made purchase landed on.
+export function fetchRecentActivities({ orgId, apiKey, sinceDate }, fetchImpl = fetch) {
+  return fetchAllPages(
+    (p) =>
+      `${BASE}/organizations/${encodeURIComponent(orgId)}/supporters/activities-v3` +
+      `?createdStart=${sinceDate}&pageSize=${PAGE_SIZE}&pageNumber=${p}`,
+    apiKey,
+    fetchImpl
+  );
 }
 
 // Every event in the organization (names + IDs), used to confirm the saved
