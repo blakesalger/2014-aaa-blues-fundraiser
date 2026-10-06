@@ -2087,6 +2087,36 @@ fieldset legend {
   text-align: center;
 }
 
+.raffle-package {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.raffle-package:hover,
+.raffle-package:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(4, 30, 66, 0.16);
+}
+
+.raffle-package:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.raffle-package-cta {
+  margin: 14px 0 0;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--blue);
+}
+
+.raffle-package:hover .raffle-package-cta {
+  text-decoration: underline;
+}
+
 .raffle-package.featured {
   border: 2px solid var(--gold);
 }
