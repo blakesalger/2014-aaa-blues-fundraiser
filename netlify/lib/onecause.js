@@ -40,19 +40,6 @@ export function stripEventPrefix(eventId) {
   return String(eventId ?? "").trim().replace(/^vevt[:\s_-]*/i, "");
 }
 
-// OneCause sometimes shows IDs with a label in front ("event: 1234...",
-// "vevt:1234..."). Strip a leading word + colon so IDs can be compared.
-export function bareId(id) {
-  return String(id ?? "").trim().replace(/^[a-z]+\s*:\s*/i, "");
-}
-
-export function eventsUrl(orgId, pageNumber = 1, pageSize = PAGE_SIZE) {
-  return (
-    `${BASE}/organizations/${encodeURIComponent(orgId)}/events` +
-    `?pageSize=${pageSize}&pageNumber=${pageNumber}`
-  );
-}
-
 export function activitiesUrl(orgId, eventId, pageNumber = 1, pageSize = PAGE_SIZE) {
   // OneCause's API wants the lowercase "vevt:" prefix in front of the ID, so
   // strip whatever prefix was pasted and add it exactly once.
@@ -63,9 +50,10 @@ export function activitiesUrl(orgId, eventId, pageNumber = 1, pageSize = PAGE_SI
   );
 }
 
-// The docs don't show the exact JSON envelope, only that rows are paged and a
-// next_page_number is returned. Be tolerant: accept a bare array, or the first
-// array-valued property of the response object.
+// OneCause's real replies are { code, status, type, payload: { items: [...],
+// nextPageNumber } } — the rows are one level down in payload.items. Be
+// tolerant of other layouts too: a bare array, or the first array-valued
+// property (directly on the reply, or one level down).
 export function extractRows(json) {
   if (Array.isArray(json)) return json;
   if (json && typeof json === "object") {
@@ -83,33 +71,6 @@ export function extractRows(json) {
     }
   }
   return [];
-}
-
-// Structure only — key names, types and counts, never values. Used by the
-// tester to show what shape OneCause's responses really have.
-export function describeShape(json) {
-  if (Array.isArray(json)) {
-    const first = json[0];
-    return {
-      type: "array",
-      length: json.length,
-      firstItemKeys: first && typeof first === "object" ? Object.keys(first).slice(0, 80) : null,
-    };
-  }
-  if (json && typeof json === "object") {
-    const keys = {};
-    for (const [k, v] of Object.entries(json)) {
-      if (Array.isArray(v)) {
-        const first = v[0];
-        keys[k] = `array(${v.length})` +
-          (first && typeof first === "object" ? ` of objects with keys: ${Object.keys(first).slice(0, 80).join(", ")}` : "");
-      } else if (v === null) keys[k] = "null";
-      else if (typeof v === "object") keys[k] = `object(keys: ${Object.keys(v).slice(0, 12).join(", ")})`;
-      else keys[k] = typeof v;
-    }
-    return { type: "object", keys };
-  }
-  return { type: typeof json };
 }
 
 // OneCause's real replies look like
@@ -160,39 +121,6 @@ async function fetchAllPages(buildUrl, apiKey, fetchImpl = fetch) {
 // Every paid/refunded activity for the event.
 export function fetchAllActivities({ orgId, eventId, apiKey }, fetchImpl = fetch) {
   return fetchAllPages((p) => activitiesUrl(orgId, eventId, p), apiKey, fetchImpl);
-}
-
-// Recent activity across the WHOLE organization (no event filter). Used only
-// by the tester to find which event a just-made purchase landed on.
-export function fetchRecentActivities({ orgId, apiKey, sinceDate }, fetchImpl = fetch) {
-  return fetchAllPages(
-    (p) =>
-      `${BASE}/organizations/${encodeURIComponent(orgId)}/supporters/activities-v3` +
-      `?createdStart=${sinceDate}&pageSize=${PAGE_SIZE}&pageNumber=${p}`,
-    apiKey,
-    fetchImpl
-  );
-}
-
-// Every event in the organization (names + IDs), used to confirm the saved
-// Event ID really is the raffle event.
-export function fetchAllEvents({ orgId, apiKey }, fetchImpl = fetch) {
-  return fetchAllPages((p) => eventsUrl(orgId, p), apiKey, fetchImpl);
-}
-
-// Is the saved Event ID one of the account's events? Returns the match (name,
-// status, date) plus a short list of the account's events to pick from.
-export function checkEvent(eventRows, configuredEventId) {
-  const want = stripEventPrefix(configuredEventId).toLowerCase();
-  const events = eventRows.map((r) => ({
-    name: r.event_name ?? null,
-    id: stripEventPrefix(r.event_id ?? r.id),
-    date: r.event_date ?? null,
-    status: r.site_status ?? null,
-    testEvent: r.test_event ?? null,
-  }));
-  const match = events.find((e) => e.id.toLowerCase() === want) || null;
-  return { savedEventIdFound: !!match, match, eventsInAccount: events.length, events: events.slice(0, 50) };
 }
 
 export function num(value) {

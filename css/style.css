@@ -2263,6 +2263,32 @@ fieldset legend {
   margin-top: 28px;
 }
 
+.sponsor-tile {
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 24px;
+  background: var(--white);
+  border: 1px solid #E4E9F1;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.sponsor-tile img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 90px;
+  object-fit: contain;
+}
+
+/* For white / very light logos that would disappear on a white card */
+.sponsor-tile-dark {
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
 .logo-placeholder {
   min-height: 130px;
   display: flex;
