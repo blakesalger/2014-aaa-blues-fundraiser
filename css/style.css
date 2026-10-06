@@ -2017,6 +2017,18 @@ fieldset legend {
   color: #C7D0E0;
 }
 
+.raffle-pot-split {
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(252, 181, 20, 0.45);
+  font-size: 1.05rem;
+  color: var(--white);
+}
+
+.raffle-pot-split strong {
+  color: var(--gold);
+}
+
 .raffle-cta {
   text-align: center;
   margin-top: 28px;
