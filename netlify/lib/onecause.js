@@ -34,12 +34,23 @@ export function authHeaders(apiKey) {
   return { Authorization: `api ${apiKey}`, Accept: "application/json" };
 }
 
+// Accept an Event ID exactly as OneCause shows it: with or without the
+// "VEVT"/"vevt:" prefix, in any capitalization. (The ID itself keeps its case.)
+export function stripEventPrefix(eventId) {
+  return String(eventId ?? "").trim().replace(/^vevt[:\s_-]*/i, "");
+}
+
+export function eventsUrl(orgId, pageNumber = 1, pageSize = PAGE_SIZE) {
+  return (
+    `${BASE}/organizations/${encodeURIComponent(orgId)}/events` +
+    `?pageSize=${pageSize}&pageNumber=${pageNumber}`
+  );
+}
+
 export function activitiesUrl(orgId, eventId, pageNumber = 1, pageSize = PAGE_SIZE) {
-  // Accept the Event ID exactly as OneCause shows it: with or without the
-  // "VEVT"/"vevt:" prefix, in any capitalization. OneCause's API wants the
-  // lowercase "vevt:" prefix in front of the ID, so strip any prefix and add it.
-  const id = String(eventId).trim().replace(/^vevt[:\s_-]*/i, "");
-  const origin = `vevt:${id}`;
+  // OneCause's API wants the lowercase "vevt:" prefix in front of the ID, so
+  // strip whatever prefix was pasted and add it exactly once.
+  const origin = `vevt:${stripEventPrefix(eventId)}`;
   return (
     `${BASE}/organizations/${encodeURIComponent(orgId)}/supporters/activities-v3` +
     `?originIDs=${origin}&pageSize=${pageSize}&pageNumber=${pageNumber}`
@@ -65,15 +76,15 @@ export function nextPageNumber(json) {
   return n === null || n === undefined || n === "" ? null : Number(n);
 }
 
-// Fetches every page of activities for the event. Throws OneCauseError on any
-// non-2xx response.
-export async function fetchAllActivities({ orgId, eventId, apiKey }, fetchImpl = fetch) {
+// Fetches every page from a paged OneCause endpoint. `buildUrl(pageNumber)`
+// returns the URL for a page. Throws OneCauseError on any non-2xx response.
+async function fetchAllPages(buildUrl, apiKey, fetchImpl = fetch) {
   const rows = [];
   let pageNumber = 1;
   let pages = 0;
 
   while (pageNumber && pages < MAX_PAGES) {
-    const url = activitiesUrl(orgId, eventId, pageNumber);
+    const url = buildUrl(pageNumber);
     const res = await fetchImpl(url, { headers: authHeaders(apiKey) });
     const text = await res.text();
     if (!res.ok) throw new OneCauseError(res.status, text.slice(0, 500), url);
@@ -96,6 +107,32 @@ export async function fetchAllActivities({ orgId, eventId, apiKey }, fetchImpl =
   }
 
   return { rows, pages };
+}
+
+// Every paid/refunded activity for the event.
+export function fetchAllActivities({ orgId, eventId, apiKey }, fetchImpl = fetch) {
+  return fetchAllPages((p) => activitiesUrl(orgId, eventId, p), apiKey, fetchImpl);
+}
+
+// Every event in the organization (names + IDs), used to confirm the saved
+// Event ID really is the raffle event.
+export function fetchAllEvents({ orgId, apiKey }, fetchImpl = fetch) {
+  return fetchAllPages((p) => eventsUrl(orgId, p), apiKey, fetchImpl);
+}
+
+// Is the saved Event ID one of the account's events? Returns the match (name,
+// status, date) plus a short list of the account's events to pick from.
+export function checkEvent(eventRows, configuredEventId) {
+  const want = stripEventPrefix(configuredEventId).toLowerCase();
+  const events = eventRows.map((r) => ({
+    name: r.event_name ?? null,
+    id: stripEventPrefix(r.event_id ?? r.id),
+    date: r.event_date ?? null,
+    status: r.site_status ?? null,
+    testEvent: r.test_event ?? null,
+  }));
+  const match = events.find((e) => e.id.toLowerCase() === want) || null;
+  return { savedEventIdFound: !!match, match, eventsInAccount: events.length, events: events.slice(0, 50) };
 }
 
 export function num(value) {

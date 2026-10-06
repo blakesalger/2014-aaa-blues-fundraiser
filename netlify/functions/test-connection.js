@@ -9,6 +9,8 @@
 
 import {
   fetchAllActivities,
+  fetchAllEvents,
+  checkEvent,
   summarize,
   isRaffle,
   isCollected,
@@ -83,6 +85,23 @@ export default async (req) => {
   try {
     const { rows, pages } = await fetchAllActivities({ orgId, eventId, apiKey });
 
+    // Separate check: is the saved Event ID actually one of this account's
+    // events? (Zero sales looks identical whether the ID is right or wrong, so
+    // this is what proves it before the raffle starts.) Never fails the test.
+    let eventCheck;
+    try {
+      const { rows: eventRows } = await fetchAllEvents({ orgId, apiKey });
+      eventCheck = checkEvent(eventRows, eventId);
+      eventCheck.verdict = eventCheck.savedEventIdFound
+        ? `GOOD: the saved Event ID is "${eventCheck.match.name}" (${eventCheck.match.status || "status unknown"}). Make sure that's your raffle event.`
+        : "PROBLEM: the saved Event ID doesn't match any event in this OneCause account. Pick your raffle event from the 'events' list below and save its ID as ONECAUSE_EVENT_ID.";
+    } catch (e) {
+      eventCheck = {
+        verdict: "Couldn't read the event list, so the Event ID couldn't be double-checked.",
+        detail: e instanceof OneCauseError ? `HTTP ${e.status}: ${e.bodyText}` : String(e),
+      };
+    }
+
     const itemTypeCounts = {};
     for (const row of rows) {
       const type = row.purchased_item_type || "(blank)";
@@ -119,6 +138,7 @@ export default async (req) => {
       authUsed: "Authorization: api <key>",
       credentialsFromNetlifyEnv: usedEnv,
       pagesFetched: pages,
+      eventCheck,
       activitiesOnThisEvent: rows.length,
       itemTypesSeen: itemTypeCounts,
       raffle: {
@@ -140,7 +160,7 @@ export default async (req) => {
       sampleRaffleRows,
       note:
         raffleRows.length === 0
-          ? "Connected, but no 'Raffle' purchases were found on this event yet. That's expected before sales start — or double-check the Event ID if you expected sales."
+          ? "Connected, but no 'Raffle' purchases were found on this event yet. That's expected before sales start. Check eventCheck.verdict above to confirm the Event ID is the right event."
           : undefined,
     });
   } catch (err) {
