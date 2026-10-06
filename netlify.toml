@@ -21,7 +21,7 @@
 #
 # Required for the raffle pot:
 #   ONECAUSE_ORG_ID          - your OneCause organization ID (shown next to your API key)
-#   ONECAUSE_EVENT_ID        - the OneCause event the raffle is sold on (36-char ID, no "vevt:" prefix)
+#   ONECAUSE_EVENT_ID        - the OneCause event the raffle is sold on (paste it as OneCause shows it; a "VEVT" prefix is fine either way)
 #   ONECAUSE_API_KEY         - your OneCause API key (sent as "Authorization: api <key>")
 # Optional:
 #   RAFFLE_WINNER_SHARE_PCT  - winner's percentage of the pot (default 50)

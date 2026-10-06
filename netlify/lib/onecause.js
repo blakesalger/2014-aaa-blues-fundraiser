@@ -35,7 +35,11 @@ export function authHeaders(apiKey) {
 }
 
 export function activitiesUrl(orgId, eventId, pageNumber = 1, pageSize = PAGE_SIZE) {
-  const origin = String(eventId).startsWith("vevt:") ? String(eventId) : `vevt:${eventId}`;
+  // Accept the Event ID exactly as OneCause shows it: with or without the
+  // "VEVT"/"vevt:" prefix, in any capitalization. OneCause's API wants the
+  // lowercase "vevt:" prefix in front of the ID, so strip any prefix and add it.
+  const id = String(eventId).trim().replace(/^vevt[:\s_-]*/i, "");
+  const origin = `vevt:${id}`;
   return (
     `${BASE}/organizations/${encodeURIComponent(orgId)}/supporters/activities-v3` +
     `?originIDs=${origin}&pageSize=${pageSize}&pageNumber=${pageNumber}`
