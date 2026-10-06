@@ -11,9 +11,10 @@ import { getStore } from "@netlify/blobs";
 import { fetchAllActivities, summarize, OneCauseError } from "../lib/onecause.js";
 
 export default async () => {
-  const orgId = process.env.ONECAUSE_ORG_ID;
-  const eventId = process.env.ONECAUSE_EVENT_ID;
-  const apiKey = process.env.ONECAUSE_API_KEY;
+  // trim(): a stray space or newline from copy/paste would otherwise break auth
+  const orgId = (process.env.ONECAUSE_ORG_ID || "").trim();
+  const eventId = (process.env.ONECAUSE_EVENT_ID || "").trim();
+  const apiKey = (process.env.ONECAUSE_API_KEY || "").trim();
   const winnerSharePct = parseFloat(process.env.RAFFLE_WINNER_SHARE_PCT || "50");
 
   if (!orgId || !eventId || !apiKey) {
