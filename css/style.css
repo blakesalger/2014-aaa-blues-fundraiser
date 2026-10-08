@@ -2333,3 +2333,83 @@ fieldset legend {
     gap: 24px;
   }
 }
+
+/* ==========================================================================
+   Home page sponsor wall (Platinum row is always larger than Gold)
+   ========================================================================== */
+.sponsor-tier {
+  margin-top: 36px;
+}
+
+.sponsor-tier-label {
+  display: inline-block;
+  margin: 0 0 18px;
+  padding: 5px 24px;
+  border-radius: 999px;
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+.sponsor-tier-platinum {
+  background: linear-gradient(135deg, #F1F3F7 0%, #B8C2D3 100%);
+  border: 1px solid #B8C2D3;
+}
+
+.sponsor-tier-gold {
+  background: linear-gradient(135deg, var(--gold) 0%, #FFD666 100%);
+}
+
+.sponsor-wall {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sponsor-tile-platinum {
+  flex: 0 1 560px;
+  min-height: 300px;
+  padding: 32px;
+  border: 2px solid #B8C2D3;
+}
+
+.sponsor-tile-platinum img {
+  max-height: 240px;
+}
+
+.sponsor-tile-gold {
+  flex: 0 1 300px;
+  min-height: 160px;
+  border: 2px solid var(--gold);
+}
+
+.sponsor-tile-gold img {
+  max-height: 110px;
+}
+
+/* Stand-in for a sponsor whose logo file hasn't been added yet */
+.sponsor-name-text {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--navy);
+}
+
+@media (max-width: 640px) {
+  .sponsor-tile-platinum {
+    min-height: 220px;
+    padding: 24px;
+  }
+
+  .sponsor-tile-platinum img {
+    max-height: 180px;
+  }
+
+  .sponsor-tile-gold {
+    flex: 1 1 100%;
+    max-width: 320px;
+  }
+}
