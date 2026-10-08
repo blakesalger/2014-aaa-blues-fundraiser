@@ -155,16 +155,13 @@ export function lineRevenue(row) {
   return num(row.activity_price_in_dollars) * Math.max(num(row.quantity), 1);
 }
 
-// Ticket packages sold on the raffle page: dollars -> tickets.
-const PACKAGE_TICKETS = { 5: 1, 10: 3, 25: 10 };
-
-// Best-effort ticket count. Packages can be recorded as quantity-of-packages or
-// quantity-of-tickets, so look at the per-unit dollar amount to decide.
-export function estimateTickets(revenue, quantity) {
-  const qty = Math.max(Math.round(num(quantity)), 1);
-  const unit = Math.round((revenue / qty) * 100) / 100;
-  if (PACKAGE_TICKETS[unit]) return PACKAGE_TICKETS[unit] * qty; // qty = packages
-  return qty; // otherwise assume qty already counts individual tickets
+// Tickets on one purchase line. Raffle tickets use bulk pricing per ticket
+// (1-4 = $5 each, 5-9 = $4 each, 10+ = $3 each), and OneCause's `quantity` is the
+// number of tickets bought (their docs: "7 raffle tickets in one transaction =
+// quantity of 7"), so the count is just the quantity. This only feeds the
+// optional "tickets sold" number on the bar-TV display — never the pot dollars.
+export function estimateTickets(_revenue, quantity) {
+  return Math.max(Math.round(num(quantity)), 1);
 }
 
 export function summarize(rows, { winnerSharePct = 50 } = {}) {
