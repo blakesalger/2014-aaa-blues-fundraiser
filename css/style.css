@@ -2572,3 +2572,78 @@ fieldset legend {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---- Get Social With the Blues (player photo + name + Instagram handle) ---- */
+.social-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.social-tile {
+  flex: 0 1 180px;
+  background: var(--white);
+  border: 1px solid #E4E9F1;
+  border-top: 3px solid var(--gold);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 18px 10px 16px;
+  text-align: center;
+}
+
+.social-photo {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+}
+
+.social-name {
+  margin: 10px 0 6px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--navy);
+}
+
+.social-handle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a.social-handle:hover {
+  text-decoration: underline;
+}
+
+.social-handle-todo {
+  color: var(--gray-mid);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.insta-icon {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 480px) {
+  .social-tile {
+    flex: 0 1 calc(50% - 8px);
+  }
+
+  .social-photo {
+    width: 80px;
+    height: 80px;
+  }
+}
