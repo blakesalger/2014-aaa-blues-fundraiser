@@ -2421,3 +2421,154 @@ fieldset legend {
     max-width: 320px;
   }
 }
+
+/* ==========================================================================
+   Trading pins page
+   ========================================================================== */
+.pin-authentic {
+  max-width: 760px;
+  margin: 32px auto 0;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--blue) 100%);
+  border: 3px solid var(--gold);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.pin-authentic-title {
+  margin: 0 0 8px;
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.pin-authentic-text {
+  margin: 0;
+  color: var(--white);
+  font-size: 1.05rem;
+}
+
+.pin-profiles {
+  display: grid;
+  gap: 28px;
+  margin-top: 32px;
+}
+
+.pin-profile {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 24px 28px;
+  background: var(--white);
+  border: 1px solid #E4E9F1;
+  border-top: 3px solid var(--gold);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.pin-profile-body h3 {
+  font-size: 1.9rem;
+  margin-bottom: 10px;
+}
+
+.pin-profile-bio {
+  margin: 0 0 14px;
+  color: var(--gray-dark);
+}
+
+.pin-profile-bio-todo {
+  color: var(--gray-mid);
+  font-style: italic;
+}
+
+.pin-profile-contribution {
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--gray-light);
+  border-left: 4px solid var(--gold);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.95rem;
+}
+
+.pin-profile-player {
+  grid-row: 1 / span 2;
+}
+
+.pin-profile-pics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.pin-figure {
+  margin: 0;
+}
+
+.pin-figure figcaption {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* Photo boxes: every photo of a given kind is cropped to the same shape */
+.photo-slot {
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--gray-light);
+}
+
+.photo-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-slot-portrait {
+  aspect-ratio: 4 / 5;
+}
+
+.photo-slot-square {
+  aspect-ratio: 1 / 1;
+}
+
+.photo-slot-landscape {
+  aspect-ratio: 4 / 3;
+}
+
+.photo-slot-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  text-align: center;
+  border: 2px dashed #B8C2D3;
+  color: var(--gray-mid);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+@media (max-width: 720px) {
+  .pin-profile {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .pin-profile-player {
+    grid-row: auto;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .pin-profile-pics {
+    grid-template-columns: 1fr;
+  }
+}
