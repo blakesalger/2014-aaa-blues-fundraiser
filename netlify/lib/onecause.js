@@ -155,8 +155,8 @@ export function lineRevenue(row) {
   return num(row.activity_price_in_dollars) * Math.max(num(row.quantity), 1);
 }
 
-// Tickets on one purchase line. Raffle tickets use bulk pricing per ticket
-// (1-4 = $5 each, 5-9 = $4 each, 10+ = $3 each), and OneCause's `quantity` is the
+// Tickets on one purchase line. Raffle tickets are sold in packages
+// (1 for $5, 5 for $20, 10 for $30), and OneCause's `quantity` is the
 // number of tickets bought (their docs: "7 raffle tickets in one transaction =
 // quantity of 7"), so the count is just the quantity. This only feeds the
 // optional "tickets sold" number on the bar-TV display — never the pot dollars.
