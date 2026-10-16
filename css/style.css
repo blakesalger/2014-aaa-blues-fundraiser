@@ -136,7 +136,7 @@ img {
 
 .nav-links {
   display: flex;
-  gap: 8px;
+  gap: 2px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -147,7 +147,8 @@ img {
   text-decoration: none;
   font-weight: 600;
   font-size: 0.92rem;
-  padding: 10px 14px;
+  padding: 10px 11px;
+  white-space: nowrap;
   border-radius: 6px;
   transition: background 0.15s ease;
 }
@@ -1932,7 +1933,7 @@ fieldset legend {
 }
 
 /* ---- Responsive ---- */
-@media (max-width: 820px) {
+@media (max-width: 1100px) {
   .nav-toggle {
     display: block;
   }
@@ -1956,7 +1957,9 @@ fieldset legend {
     position: relative;
     flex-wrap: wrap;
   }
+}
 
+@media (max-width: 820px) {
   .hero h1 {
     font-size: 1.9rem;
   }
@@ -2686,4 +2689,99 @@ a.social-handle:hover {
   color: #6B7280;
   cursor: not-allowed;
   pointer-events: none;
+}
+
+/* ---- 50/50 raffle promo (Alumni Auction page) ---- */
+.raffle-promo {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) 1fr;
+  gap: 36px;
+  align-items: center;
+  background: var(--white);
+  border: 3px solid var(--gold);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 28px;
+}
+
+.raffle-promo-logo {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(4, 30, 66, 0.2);
+  padding: 8px;
+}
+
+.raffle-promo-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.raffle-promo-body {
+  text-align: left;
+}
+
+.raffle-promo-body .tagline {
+  margin: 0;
+  line-height: 1.1;
+}
+
+.raffle-promo-body h2 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  color: var(--navy);
+}
+
+.raffle-promo-body p {
+  margin: 0 0 16px;
+}
+
+.raffle-promo-body .tagline {
+  margin: 0;
+}
+
+.raffle-pot.raffle-pot-compact {
+  max-width: none;
+  margin: 0 0 18px;
+  padding: 16px 20px 14px;
+  text-align: center;
+}
+
+.raffle-pot.raffle-pot-compact[hidden] {
+  display: none;
+}
+
+.raffle-pot-compact .raffle-pot-label {
+  font-size: 1.15rem;
+}
+
+.raffle-pot-compact .raffle-pot-amount {
+  font-size: 3.6rem;
+  margin: 2px 0 4px;
+}
+
+.raffle-pot-compact .raffle-pot-asof {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 760px) {
+  .raffle-promo {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 20px;
+  }
+
+  .raffle-promo-logo {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .raffle-promo-body {
+    text-align: center;
+  }
+
+  .raffle-promo-body h2 {
+    font-size: 1.7rem;
+  }
 }

@@ -25,6 +25,7 @@
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="alumni-auction.html" aria-current="page">Alumni Auction</a></li>
+      <li><a href="50-50-raffle.html">50/50 Raffle</a></li>
       <li><a href="sponsorship.html">Sponsorship</a></li>
       <li><a href="3v3-tournament.html">3v3 Tournament</a></li>
       <li><a href="about.html">About PeeWee Quebec</a></li>
@@ -110,6 +111,34 @@
         All proceeds support the 2014 AAA St Louis Blues' trip to the 2027 Quebec International
         Hockey Tournament (February 10&ndash;21, 2027).
       </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="raffle-promo">
+      <div class="raffle-promo-logo">
+        <img src="images/raffle-5050-logo.webp" alt="St. Louis AAA Blues 50/50 Raffle &mdash; PeeWee Quebec Fundraiser">
+      </div>
+      <div class="raffle-promo-body">
+        <p class="tagline">Feeling Lucky?</p>
+        <h2>Play Our 50/50 Raffle</h2>
+        <p>
+          Tickets start at just $5, and the winner takes home <strong>50% of the total pot</strong>,
+          drawn live on social media on January 10, 2027. Every ticket helps send our team to Quebec!
+        </p>
+
+        <!-- The total pot is filled in automatically from OneCause by js/pot.js. This box stays hidden
+             until the live total loads, so a placeholder number is never shown. -->
+        <div class="raffle-pot raffle-pot-compact" data-pot-reveal hidden>
+          <p class="raffle-pot-label">Current Total Pot</p>
+          <p class="raffle-pot-amount">$0</p>
+          <p class="raffle-pot-asof"></p>
+        </div>
+
+        <a class="btn btn-gold ticket-feature-btn" href="50-50-raffle.html">Get 50/50 Tickets &rarr;</a>
+      </div>
     </div>
   </div>
 </section>
@@ -246,6 +275,7 @@
   </div>
 </footer>
 
+<script src="js/pot.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
