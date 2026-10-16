@@ -2647,3 +2647,43 @@ a.social-handle:hover {
     height: 80px;
   }
 }
+
+/* ---- Closed sponsorship tiers (greyed out) ---- */
+.tier-card.tier-closed {
+  filter: grayscale(1);
+  opacity: 0.55;
+  box-shadow: none;
+}
+
+.tier-card.tier-closed:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.tier-card.tier-closed.featured {
+  border-color: #E4E9F1;
+}
+
+.tier-closed-badge {
+  position: absolute;
+  top: 10px;
+  right: -34px;
+  z-index: 2;
+  width: 130px;
+  padding: 4px 0;
+  background: var(--navy);
+  color: var(--white);
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-align: center;
+  transform: rotate(35deg);
+}
+
+.tier-cta.tier-cta-closed {
+  background: #D5DAE3;
+  border-color: #D5DAE3;
+  color: #6B7280;
+  cursor: not-allowed;
+  pointer-events: none;
+}
