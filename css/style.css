@@ -2785,3 +2785,70 @@ a.social-handle:hover {
     font-size: 1.7rem;
   }
 }
+
+/* ---- Alumni Reunion: individual tickets on sale ---- */
+.price-tile-onsale {
+  position: relative;
+  border: 2px solid var(--gold);
+  background: rgba(252, 181, 20, 0.12);
+  padding-top: 22px;
+}
+
+.price-tile-flag {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--navy);
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  padding: 2px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ticket-onsale-wrap {
+  display: inline-block;
+  text-align: center;
+}
+
+.ticket-onsale-banner {
+  display: inline-block;
+  margin: 0 0 10px;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: "Bebas Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.14em;
+  padding: 4px 22px;
+  border-radius: 6px;
+  transform: rotate(-2deg);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.ticket-onsale-wrap .ticket-feature-btn {
+  display: block;
+}
+
+/* Alumni Reunion event details: Date / Time / Attire on one row, Location below */
+.ticket-feature .event-detail-box.event-detail-box-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 20px 40px;
+  justify-content: center;
+}
+
+.event-detail-box-grid .detail-wide {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 700px) {
+  .ticket-feature .event-detail-box.event-detail-box-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
