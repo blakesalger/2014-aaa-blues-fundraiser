@@ -2852,3 +2852,8 @@ a.price-tile-onsale .price-note {
   font-weight: 800;
   letter-spacing: 0.02em;
 }
+
+/* Square / stacked logos need more height to read at the same size as wide logos */
+.sponsor-tile-gold.sponsor-tile-square img {
+  max-height: 150px;
+}
