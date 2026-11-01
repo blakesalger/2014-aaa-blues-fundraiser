@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apparel Order Received | 2014 AAA St Louis Blues</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Bebas+Neue&family=Jost:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-bar">
+    <a class="brand" href="index.html">
+      <img src="images/team-logo.png" alt="2014 AAA St Louis Blues logo">
+      <span class="brand-text">
+        <span class="brand-title">2014 AAA St Louis Blues</span>
+        <span class="brand-sub">Road to Quebec!</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="alumni-auction.html">Alumni Auction</a></li>
+      <li><a href="50-50-raffle.html">50/50 Raffle</a></li>
+      <li><a href="sponsorship.html">Sponsorship</a></li>
+      <li><a href="3v3-tournament.html">3v3 Tournament</a></li>
+      <li><a href="about.html">About PeeWee Quebec</a></li>
+      <li><a href="team.html">The Team</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>Thank You!</h1>
+    <p>Your apparel order has been received. One step left &mdash; complete your payment below to finish your order.</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="payment-note" style="max-width:640px; margin-left:auto; margin-right:auto;">
+      <strong>Complete Your Payment:</strong> Pay via Venmo (@AAABLUES2014) and please put
+      <strong>&ldquo;Parent Apparel&rdquo;</strong> in the notes.
+      <a class="btn btn-gold btn-block" id="apparel-pay-link" style="margin-top:14px;" href="https://venmo.com/u/aaablues2014?txn=pay&amp;note=Parent%20Apparel" target="_blank" rel="noopener noreferrer">Pay via Venmo (@AAABLUES2014)</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <a class="btn btn-navy" href="team-parents.html">Back to Team Parents</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-photo-strip">
+    <img src="images/footer-1.jpg" alt="2014 AAA St Louis Blues player on the ice">
+    <img src="images/footer-2.jpg" alt="2014 AAA St Louis Blues players on the ice">
+    <img src="images/footer-3.jpg" alt="2014 AAA St Louis Blues player on the ice">
+    <img src="images/footer-4.jpg" alt="2014 AAA St Louis Blues player smiling on the ice">
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      &copy; 2026 2014 AAA St Louis Blues &mdash; Road to Quebec! Fundraiser
+    </div>
+  </div>
+</footer>
+
+<script>
+// If the order total was saved when the form was submitted, put it in the Venmo link.
+(function () {
+  try {
+    var total = parseFloat(sessionStorage.getItem("apparelTotal"));
+    var link = document.getElementById("apparel-pay-link");
+    if (link && total > 0) {
+      link.href = "https://venmo.com/u/aaablues2014?txn=pay&amount=" + total.toFixed(2) + "&note=" + encodeURIComponent("Parent Apparel");
+      link.textContent = "Pay $" + total.toFixed(2).replace(/.00$/, "") + " via Venmo (@AAABLUES2014)";
+    }
+  } catch (e) {}
+})();
+</script>
+</body>
+</html>

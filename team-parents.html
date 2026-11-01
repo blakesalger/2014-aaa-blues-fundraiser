@@ -303,14 +303,126 @@ Thanks so much,
   </div>
 </section>
 
-<section class="alt">
+<section class="alt" id="team-apparel">
   <div class="container">
-    <h2 class="section-title">Merch, Passes &amp; Pins</h2>
+    <h2 class="section-title">Team Apparel</h2>
+    <p class="section-intro">Rep the 2014 AAA Blues! Browse the apparel below, then fill out the order form and pay via Venmo.</p>
+
+    <!-- Replace each .apparel-photo placeholder with:  <img src="images/apparel/FILENAME.jpg" alt="DESCRIPTION">
+         and remove the "photo-slot-empty" class and the placeholder text. -->
+    <div class="apparel-grid">
+      <div class="apparel-card">
+        <div class="apparel-photo photo-slot photo-slot-square photo-slot-empty">Photo coming soon</div>
+        <h3>Cream Crew Neck Sweatshirt</h3>
+        <p class="apparel-prices"><strong>Adult $38</strong> &bull; <strong>Youth $34</strong></p>
+        <p class="apparel-sizes">Adult S&ndash;2XL &bull; Youth S&ndash;XL</p>
+        <button type="button" class="btn btn-gold apparel-order-btn" data-apparel-add="Cream Crew Neck Sweatshirt &ndash; Adult">Order This</button>
+      </div>
+      <div class="apparel-card">
+        <div class="apparel-photo photo-slot photo-slot-square photo-slot-empty">Photo coming soon</div>
+        <h3>Cream Hoodie</h3>
+        <p class="apparel-prices"><strong>Adult $48</strong> &bull; <strong>Youth $44</strong></p>
+        <p class="apparel-sizes">Adult S&ndash;2XL &bull; Youth S&ndash;XL</p>
+        <button type="button" class="btn btn-gold apparel-order-btn" data-apparel-add="Cream Hoodie &ndash; Adult">Order This</button>
+      </div>
+      <div class="apparel-card">
+        <div class="apparel-photo photo-slot photo-slot-square photo-slot-empty">Photo coming soon</div>
+        <h3>Navy Blue Hoodie</h3>
+        <p class="apparel-prices"><strong>Adult $48</strong> &bull; <strong>Youth $44</strong></p>
+        <p class="apparel-sizes">Adult S&ndash;2XL &bull; Youth S&ndash;XL</p>
+        <button type="button" class="btn btn-gold apparel-order-btn" data-apparel-add="Navy Blue Hoodie &ndash; Adult">Order This</button>
+      </div>
+      <div class="apparel-card">
+        <div class="apparel-photo photo-slot photo-slot-square photo-slot-empty">Photo coming soon</div>
+        <h3>Blue Beanie</h3>
+        <p class="apparel-prices"><strong>$22</strong></p>
+        <p class="apparel-sizes">Custom embroidered player number available</p>
+        <button type="button" class="btn btn-gold apparel-order-btn" data-apparel-add="Blue Beanie (Navy)">Order This</button>
+      </div>
+      <div class="apparel-card">
+        <div class="apparel-photo photo-slot photo-slot-square photo-slot-empty">Photo coming soon</div>
+        <h3>White Beanie</h3>
+        <p class="apparel-prices"><strong>$31</strong></p>
+        <p class="apparel-sizes">Custom embroidered player number available</p>
+        <button type="button" class="btn btn-gold apparel-order-btn" data-apparel-add="White Beanie (Cream)">Order This</button>
+      </div>
+    </div>
+
+    <div class="resource-block" id="apparel-order">
+      <h3>Apparel Order Form</h3>
+      <p>
+        Add each item you'd like below. Sweatshirts and hoodies come in Adult sizes Small&ndash;2XL
+        and Youth sizes Small&ndash;XL. For beanies, enter the player number you'd like embroidered,
+        or choose no number.
+      </p>
+
+      <form class="site-form" id="apparel-form" name="parent-apparel-order" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/apparel-success.html">
+        <input type="hidden" name="form-name" value="parent-apparel-order">
+        <p class="honeypot">
+          <label>Don't fill this out if you're human: <input name="bot-field"></label>
+        </p>
+
+        <fieldset>
+          <legend>Your Information</legend>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="apparel-parent-name">Parent/Guardian Name *</label>
+              <input type="text" id="apparel-parent-name" name="Parent Guardian Name" required>
+            </div>
+            <div class="form-field">
+              <label for="apparel-player-name">Player Name *</label>
+              <input type="text" id="apparel-player-name" name="Player Name" required>
+            </div>
+            <div class="form-field">
+              <label for="apparel-email">Email *</label>
+              <input type="email" id="apparel-email" name="Email" required>
+            </div>
+            <div class="form-field">
+              <label for="apparel-phone">Phone</label>
+              <input type="tel" id="apparel-phone" name="Phone">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your Items</legend>
+          <div id="apparel-rows"></div>
+          <p class="passcode-error" id="apparel-empty" hidden>Please add at least one item to your order.</p>
+          <button type="button" class="btn btn-outline-navy" id="apparel-add-btn">+ Add Another Item</button>
+          <p class="apparel-total">Order total: <strong id="apparel-total-display">$0</strong></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Anything Else?</legend>
+          <div class="form-field">
+            <label for="apparel-notes">Notes (optional)</label>
+            <textarea id="apparel-notes" name="Notes" rows="3"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Filled in automatically by js/apparel.js so the order email is easy to read -->
+        <input type="hidden" name="Order Summary" id="apparel-summary">
+        <input type="hidden" name="Order Total" id="apparel-total">
+
+        <div class="payment-note" style="margin-top:0;">
+          <strong>Payment:</strong> After you submit, pay via Venmo (@AAABLUES2014). Please put
+          <strong>&ldquo;Parent Apparel&rdquo;</strong> in the notes.
+          <a class="btn btn-navy btn-block" id="apparel-venmo-link" style="margin-top:14px;" href="https://venmo.com/u/aaablues2014?txn=pay&amp;note=Parent%20Apparel" target="_blank" rel="noopener noreferrer">Pay via Venmo (@AAABLUES2014)</a>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-block">Submit Apparel Order</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Passes &amp; Pins</h2>
     <p class="section-intro">These order links aren't live yet &mdash; check back soon.</p>
 
     <div class="resource-block">
       <div class="button-stack">
-        <a class="btn btn-gold btn-placeholder btn-block" aria-disabled="true" onclick="return false;">Order Family Merch (coming soon)</a>
         <a class="btn btn-navy btn-placeholder btn-block" aria-disabled="true" onclick="return false;">Order Additional Trading Pins (coming soon)</a>
         <a class="btn btn-navy btn-placeholder btn-block" aria-disabled="true" onclick="return false;">Reserve Tournament Entry Passes (coming soon)</a>
       </div>
@@ -356,5 +468,6 @@ Thanks so much,
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/apparel.js"></script>
 </body>
 </html>
