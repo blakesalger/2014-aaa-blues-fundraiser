@@ -216,3 +216,18 @@
 
   addRow();
 })();
+
+// Product photo galleries: clicking a thumbnail swaps the main photo on that card.
+(function () {
+  document.querySelectorAll(".apparel-thumb").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var gallery = btn.closest(".apparel-gallery");
+      var main = gallery && gallery.querySelector("[data-apparel-main]");
+      if (!main) return;
+      main.src = btn.getAttribute("data-src");
+      main.alt = btn.getAttribute("data-alt") || "";
+      gallery.querySelectorAll(".apparel-thumb").forEach(function (b) { b.classList.remove("is-active"); });
+      btn.classList.add("is-active");
+    });
+  });
+})();
