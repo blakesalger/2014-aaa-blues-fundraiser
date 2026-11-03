@@ -16,6 +16,8 @@
     { name: "Cream Crew Neck Sweatshirt – Youth", price: 34, sizes: YOUTH_SIZES },
     { name: "Cream Hoodie – Adult",               price: 48, sizes: ADULT_SIZES },
     { name: "Cream Hoodie – Youth",               price: 44, sizes: YOUTH_SIZES },
+    { name: "Custom Name & Number Hoodie – Adult", price: 85, sizes: ADULT_SIZES, custom: true },
+    { name: "Custom Name & Number Hoodie – Youth", price: 85, sizes: YOUTH_SIZES, custom: true },
     { name: "Navy Blue Hoodie – Adult",           price: 48, sizes: ADULT_SIZES },
     { name: "Navy Blue Hoodie – Youth",           price: 44, sizes: YOUTH_SIZES },
     { name: "Blue Beanie (Navy)",                      price: 22, sizes: null, number: true },
@@ -69,9 +71,19 @@
           '<span class="hint">Each beanie row gets one number. Need different numbers? Add a separate item for each.</span>' +
         '</div>' +
       '</div>' +
+      '<div class="apparel-number" data-wrap="custom" hidden>' +
+        '<div class="form-grid">' +
+          '<div class="form-field"><label>Last name for the back *</label>' +
+            '<input type="text" data-f="cname" maxlength="20" placeholder="e.g. Smith"></div>' +
+          '<div class="form-field"><label>Player number *</label>' +
+            '<input type="text" data-f="cnumber" inputmode="numeric" maxlength="2" pattern="[0-9]{1,2}" placeholder="e.g. 17"></div>' +
+        '</div>' +
+        '<span class="hint">Printed on the back like the sample (NAME / 99). Each hoodie gets one name and number. Need different ones? Add a separate item for each.</span>' +
+      '</div>' +
       '<p class="apparel-line" data-f="line"></p>' +
       '<input type="hidden" data-n="Product"><input type="hidden" data-n="Size">' +
       '<input type="hidden" data-n="Quantity"><input type="hidden" data-n="Player Number">' +
+      '<input type="hidden" data-n="Last Name">' +
       '<input type="hidden" data-n="Line Total">';
 
     rowsEl.appendChild(row);
@@ -88,6 +100,9 @@
     var sizeSel = field(row, "size");
     var numInput = field(row, "number");
     var noNum = field(row, "nonumber");
+    var customWrap = row.querySelector('[data-wrap="custom"]');
+    var cName = field(row, "cname");
+    var cNumber = field(row, "cnumber");
 
     if (item && item.sizes) {
       if (sizeSel.getAttribute("data-for") !== item.name) {
@@ -119,6 +134,12 @@
       noNum.checked = false;
     }
 
+    var isCustom = !!(item && item.custom);
+    customWrap.hidden = !isCustom;
+    cName.required = isCustom;
+    cNumber.required = isCustom;
+    if (!isCustom) { cName.value = ""; cNumber.value = ""; }
+
     var qty = Math.max(parseInt(field(row, "qty").value, 10) || 0, 0);
     var line = item ? item.price * qty : 0;
     field(row, "line").textContent = item ? (qty + " × " + money(item.price) + " = " + money(line)) : "";
@@ -127,7 +148,8 @@
       "Product": item ? item.name : "",
       "Size": item && item.sizes ? sizeSel.value : "",
       "Quantity": String(qty),
-      "Player Number": isBeanie ? (noNum.checked ? "No number" : numInput.value) : "",
+      "Player Number": isBeanie ? (noNum.checked ? "No number" : numInput.value) : (isCustom ? cNumber.value : ""),
+      "Last Name": isCustom ? cName.value.trim() : "",
       "Line Total": item ? money(line) : ""
     };
     Object.keys(vals).forEach(function (key) {
@@ -159,7 +181,8 @@
       var text = (i + 1) + ". " + r.item.name;
       if (r.vals["Size"]) text += ", " + r.vals["Size"];
       text += " x" + r.qty + " = " + money(r.line);
-      if (r.vals["Player Number"]) text += " (number: " + r.vals["Player Number"] + ")";
+      if (r.vals["Last Name"]) text += " (last name: " + r.vals["Last Name"] + ", number: " + r.vals["Player Number"] + ")";
+      else if (r.vals["Player Number"]) text += " (number: " + r.vals["Player Number"] + ")";
       lines.push(text);
     });
     summaryField.value = lines.join("\n");
