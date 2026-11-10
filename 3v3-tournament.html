@@ -400,18 +400,24 @@
       Pre-Order Deadline: November 30
     </div>
 
+    <div class="payment-note" style="margin-top:0;">
+      <strong>Why pre-order?</strong> Prices go up $5 at the tournament, your child's name on the back
+      is only available on pre-orders, and supply at the event will be limited. Pick up your finished
+      apparel at the apparel table on the first day of the tournament.
+    </div>
+
     <div class="apparel-grid">
       <div class="apparel-card">
-        <div class="apparel-photo photo-slot photo-slot-square photo-slot-empty">Photo coming soon</div>
+        <div class="apparel-photo photo-slot photo-slot-square apparel-photo-contain"><img src="images/apparel/3v3-hoodie.webp" alt="Navy youth hooded sweatshirt with the Puck Drop 2027 New Year's 3v3 Hockey Tournament logo on the front and a sample name and number printed on the back"></div>
         <h3>Youth Hooded Sweatshirt</h3>
-        <p class="apparel-prices"><strong>Price coming soon</strong></p>
+        <p class="apparel-prices"><strong>$40</strong> &bull; $45 at the event</p>
         <p class="apparel-sizes">Youth sizes &bull; Name printed on the back</p>
         <button type="button" class="btn btn-gold apparel-order-btn" data-tapparel-add="Youth Hooded Sweatshirt">Pre-Order This</button>
       </div>
       <div class="apparel-card">
-        <div class="apparel-photo photo-slot photo-slot-square photo-slot-empty">Photo coming soon</div>
+        <div class="apparel-photo photo-slot photo-slot-square apparel-photo-contain"><img src="images/apparel/3v3-tshirt.webp" alt="Navy youth T-shirt with the Puck Drop 2027 New Year's 3v3 Hockey Tournament logo on the left chest and a sample name and number printed on the back"></div>
         <h3>Youth T-Shirt</h3>
-        <p class="apparel-prices"><strong>Price coming soon</strong></p>
+        <p class="apparel-prices"><strong>$25</strong> &bull; $30 at the event</p>
         <p class="apparel-sizes">Youth sizes &bull; Name printed on the back</p>
         <button type="button" class="btn btn-gold apparel-order-btn" data-tapparel-add="Youth T-Shirt">Pre-Order This</button>
       </div>
@@ -421,7 +427,8 @@
       <h3>Apparel Pre-Order Form</h3>
       <p>
         Add each item you'd like below and enter the name to print on the back. All pre-orders must be
-        submitted by <strong>November 30</strong>.
+        submitted by <strong>November 30</strong>. Pick up your finished apparel at the apparel table
+        on the first day of the tournament.
       </p>
 
       <form class="site-form" id="tapparel-form" name="3v3-apparel-preorder" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/3v3-apparel-success.html">
@@ -457,7 +464,7 @@
           <div id="tapparel-rows"></div>
           <p class="passcode-error" id="tapparel-empty" hidden>Please add at least one item to your order.</p>
           <button type="button" class="btn btn-outline-navy" id="tapparel-add-btn">+ Add Another Item</button>
-          <p class="apparel-total">Order total: <strong id="tapparel-total-display">TBD</strong></p>
+          <p class="apparel-total">Order total: <strong id="tapparel-total-display">$0</strong></p>
         </fieldset>
 
         <fieldset>

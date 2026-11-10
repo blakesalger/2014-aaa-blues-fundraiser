@@ -12,8 +12,8 @@
   var YOUTH_SIZES = ["Small", "Medium", "Large", "XL"];
 
   var ITEMS = [
-    { name: "Youth Hooded Sweatshirt", price: null, sizes: YOUTH_SIZES },
-    { name: "Youth T-Shirt",           price: null, sizes: YOUTH_SIZES }
+    { name: "Youth Hooded Sweatshirt", price: 40, sizes: YOUTH_SIZES },
+    { name: "Youth T-Shirt",           price: 25, sizes: YOUTH_SIZES }
   ];
 
   var summaryField = document.getElementById("tapparel-summary");
