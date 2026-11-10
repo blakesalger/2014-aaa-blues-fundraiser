@@ -388,6 +388,102 @@
   </div>
 </section>
 
+<section id="tournament-apparel">
+  <div class="container">
+    <h2 class="section-title">Official Tournament Apparel</h2>
+    <p class="section-intro">
+      Pre-order the official 3v3 tournament youth sweatshirt or T-shirt and save! Pre-orders also
+      include your child's name printed on the back.
+    </p>
+
+    <div class="alert-banner">
+      Pre-Order Deadline: November 30
+    </div>
+
+    <div class="apparel-grid">
+      <div class="apparel-card">
+        <div class="apparel-photo photo-slot photo-slot-square photo-slot-empty">Photo coming soon</div>
+        <h3>Youth Hooded Sweatshirt</h3>
+        <p class="apparel-prices"><strong>Price coming soon</strong></p>
+        <p class="apparel-sizes">Youth sizes &bull; Name printed on the back</p>
+        <button type="button" class="btn btn-gold apparel-order-btn" data-tapparel-add="Youth Hooded Sweatshirt">Pre-Order This</button>
+      </div>
+      <div class="apparel-card">
+        <div class="apparel-photo photo-slot photo-slot-square photo-slot-empty">Photo coming soon</div>
+        <h3>Youth T-Shirt</h3>
+        <p class="apparel-prices"><strong>Price coming soon</strong></p>
+        <p class="apparel-sizes">Youth sizes &bull; Name printed on the back</p>
+        <button type="button" class="btn btn-gold apparel-order-btn" data-tapparel-add="Youth T-Shirt">Pre-Order This</button>
+      </div>
+    </div>
+
+    <div class="resource-block" id="tapparel-order">
+      <h3>Apparel Pre-Order Form</h3>
+      <p>
+        Add each item you'd like below and enter the name to print on the back. All pre-orders must be
+        submitted by <strong>November 30</strong>.
+      </p>
+
+      <form class="site-form" id="tapparel-form" name="3v3-apparel-preorder" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/3v3-apparel-success.html">
+        <input type="hidden" name="form-name" value="3v3-apparel-preorder">
+        <p class="honeypot">
+          <label>Don't fill this out if you're human: <input name="bot-field"></label>
+        </p>
+
+        <fieldset>
+          <legend>Your Information</legend>
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="tapparel-parent-name">Parent/Guardian Name *</label>
+              <input type="text" id="tapparel-parent-name" name="Parent Guardian Name" required>
+            </div>
+            <div class="form-field">
+              <label for="tapparel-last-name">Last Name for Venmo Note *</label>
+              <input type="text" id="tapparel-last-name" name="Family Last Name" required>
+            </div>
+            <div class="form-field">
+              <label for="tapparel-email">Email *</label>
+              <input type="email" id="tapparel-email" name="Email" required>
+            </div>
+            <div class="form-field">
+              <label for="tapparel-phone">Phone</label>
+              <input type="tel" id="tapparel-phone" name="Phone">
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Your Items</legend>
+          <div id="tapparel-rows"></div>
+          <p class="passcode-error" id="tapparel-empty" hidden>Please add at least one item to your order.</p>
+          <button type="button" class="btn btn-outline-navy" id="tapparel-add-btn">+ Add Another Item</button>
+          <p class="apparel-total">Order total: <strong id="tapparel-total-display">TBD</strong></p>
+        </fieldset>
+
+        <fieldset>
+          <legend>Anything Else?</legend>
+          <div class="form-field">
+            <label for="tapparel-notes">Notes (optional)</label>
+            <textarea id="tapparel-notes" name="Notes" rows="3"></textarea>
+          </div>
+        </fieldset>
+
+        <!-- Filled in automatically by js/tournament-apparel.js so the order email is easy to read -->
+        <input type="hidden" name="Order Summary" id="tapparel-summary">
+        <input type="hidden" name="Order Total" id="tapparel-total">
+
+        <div class="payment-note" style="margin-top:0;">
+          <strong>Payment:</strong> Please submit your payment right away via Venmo (@AAABLUES2014) and
+          put your <strong>last name</strong> in the Venmo comments.
+          <a class="btn btn-navy btn-block" id="tapparel-venmo-link" style="margin-top:14px;" href="https://venmo.com/u/aaablues2014?txn=pay&amp;note=3v3%20Apparel" target="_blank" rel="noopener noreferrer">Pay via Venmo (@AAABLUES2014)</a>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-block">Submit Apparel Pre-Order</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <section class="alt">
   <div class="container">
     <h2 class="section-title" style="text-align:center;">About Our Sponsor</h2>
@@ -516,5 +612,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/tournament-apparel.js"></script>
 </body>
 </html>
