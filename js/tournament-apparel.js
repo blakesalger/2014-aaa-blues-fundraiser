@@ -54,13 +54,13 @@
           '<select data-f="size" required><option value="">Select a size&hellip;</option></select></div>' +
         '<div class="form-field"><label>Quantity *</label>' +
           '<input type="number" data-f="qty" min="1" max="10" value="1" required></div>' +
-        '<div class="form-field full-width"><label>Name to print on the back *</label>' +
-          '<input type="text" data-f="backname" maxlength="20" placeholder="e.g. Smith" required>' +
-          '<span class="hint">Each item gets one name. Ordering for more than one child? Add a separate item for each.</span></div>' +
+        '<div class="form-field full-width"><label>Name and Number to Print on the Back (leave blank for no customization)</label>' +
+          '<input type="text" data-f="backname" maxlength="20" placeholder="e.g. Smith 17">' +
+          '<span class="hint">Each item gets one name and number. Ordering for more than one child? Add a separate item for each.</span></div>' +
       '</div>' +
       '<p class="apparel-line" data-f="line"></p>' +
       '<input type="hidden" data-n="Product"><input type="hidden" data-n="Size">' +
-      '<input type="hidden" data-n="Quantity"><input type="hidden" data-n="Name on Back">' +
+      '<input type="hidden" data-n="Quantity"><input type="hidden" data-n="Name and Number on Back">' +
       '<input type="hidden" data-n="Line Total">';
 
     rowsEl.appendChild(row);
@@ -99,7 +99,7 @@
       "Product": item ? item.name : "",
       "Size": item ? sizeSel.value : "",
       "Quantity": String(qty),
-      "Name on Back": field(row, "backname").value.trim(),
+      "Name and Number on Back": field(row, "backname").value.trim(),
       "Line Total": lineText
     };
     Object.keys(vals).forEach(function (key) {
@@ -136,7 +136,7 @@
       if (r.priced) total += r.line; else anyTbd = true;
       var text = (i + 1) + ". " + r.item.name + ", " + (r.vals["Size"] || "no size") +
         " x" + r.qty + " = " + r.vals["Line Total"] +
-        " (name on back: " + (r.vals["Name on Back"] || "none entered") + ")";
+        " (name and number on back: " + (r.vals["Name and Number on Back"] || "no customization") + ")";
       lines.push(text);
     });
     summaryField.value = lines.join("\n");
