@@ -289,7 +289,13 @@
 
 <section class="alt">
   <div class="container">
-    <div class="shoutout-feature">
+    <div class="alert-banner" style="margin-bottom:28px;">
+      Player Shout Outs Are Closed &mdash; The Deadline Has Passed
+    </div>
+    <!-- Shout outs are CLOSED. To reopen: delete the notice banner above and remove
+         class "shoutout-closed", "inert" and "aria-disabled" from the next line, plus the
+         "Closed" text on the submit button below. -->
+    <div class="shoutout-feature shoutout-closed" inert aria-disabled="true">
       <div class="shoutout-intro">
         <h2 class="section-title">Player Shout Outs &mdash; $100 Each</h2>
         <p>
@@ -379,7 +385,7 @@
             </div>
           </div>
 
-          <button type="submit" class="btn btn-gold btn-block">Submit Shout Out</button>
+          <button type="submit" class="btn btn-gold btn-block" disabled>Closed &mdash; Deadline Passed</button>
 
           <div class="payment-note">
             <strong>Last step &mdash; pay separately:</strong> Submitting the form above does not

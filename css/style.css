@@ -3014,3 +3014,15 @@ a.price-tile-onsale .price-note {
 .apparel-thumb.is-active {
   border-color: var(--gold);
 }
+
+/* ---- Closed Player Shout Out section ---- */
+.shoutout-feature.shoutout-closed {
+  filter: grayscale(1);
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+}
+
+.shoutout-feature.shoutout-closed .shoutout-form-wrap .site-form {
+  position: static;
+}
