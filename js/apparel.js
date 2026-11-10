@@ -21,7 +21,8 @@
     { name: "Navy Blue Hoodie – Adult",           price: 48, sizes: ADULT_SIZES },
     { name: "Navy Blue Hoodie – Youth",           price: 44, sizes: YOUTH_SIZES },
     { name: "Blue Beanie (Navy)",                      price: 22, sizes: null, number: true },
-    { name: "White Beanie (Cream)",                    price: 31, sizes: null, number: true }
+    { name: "White Beanie (Cream)",                    price: 31, sizes: null, number: true },
+    { name: "White Pom Pom Beanie",                    price: 25, sizes: null, number: true }
   ];
 
   var summaryField = document.getElementById("apparel-summary");
